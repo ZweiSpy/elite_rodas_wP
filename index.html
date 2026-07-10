@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elite Rodas — Motos e scooters elétricas. Tecnologia, estilo e mobilidade sustentável no Rio de Janeiro.">
+  <title>Elite Rodas | Motos & Scooters Elétricas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #111111;
+      --bg-card: #2A2A2A;
+      --accent: #E60000;
+      --accent-hover: #ff1a1a;
+      --text-primary: #FFFFFF;
+      --text-secondary: #F2F2F2;
+      --text-muted: #999999;
+      --border: #3a3a3a;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --transition: 0.3s ease;
+      --font: 'Inter', 'Segoe UI', Roboto, sans-serif;
+      --max-width: 1200px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg-primary);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ── Utility ── */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0;
+      font-size: 0.8rem;
+    }
+
+    .top-bar__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .top-bar__item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .top-bar__item a:hover {
+      color: var(--accent);
+    }
+
+    .top-bar__icon {
+      width: 14px;
+      height: 14px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+    }
+
+    .logo__bolt {
+      width: 28px;
+      height: 28px;
+      fill: var(--accent);
+      filter: drop-shadow(0 0 6px rgba(230, 0, 0, 0.6));
+    }
+
+    .logo__brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo__elite {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+
+    .logo__rodas {
+      color: var(--accent);
+    }
+
+    .nav {
+      display: none;
+      gap: 2rem;
+    }
+
+    .nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+
+    .nav a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font);
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: var(--text-primary);
+      box-shadow: 0 4px 20px rgba(230, 0, 0, 0.35);
+    }
+
+    .btn--primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(230, 0, 0, 0.5);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border);
+    }
+
+    .btn--outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .header__cta {
+      display: none;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(230, 0, 0, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(230, 0, 0, 0.06) 0%, transparent 50%),
+        linear-gradient(160deg, #111111 0%, #1a1a1a 50%, #111111 100%);
+      z-index: 0;
+    }
+
+    .hero__grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 0;
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(230, 0, 0, 0.12);
+      border: 1px solid rgba(230, 0, 0, 0.3);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero__title {
+      font-size: clamp(2.25rem, 8vw, 4rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__title span {
+      display: block;
+      background: linear-gradient(90deg, var(--accent) 0%, #ff4444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__description {
+      font-size: clamp(1rem, 2.5vw, 1.125rem);
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hero__visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero__card-visual {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero__card-visual::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(230,0,0,0.08), transparent);
+      animation: rotate 8s linear infinite;
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    .hero__scooter-icon {
+      position: relative;
+      z-index: 1;
+      width: 120px;
+      height: 120px;
+    }
+
+    .hero__stats {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      width: 90%;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero__stat {
+      text-align: center;
+    }
+
+    .hero__stat-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .hero__stat-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── About ── */
+    .about {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, var(--bg-primary) 0%, #0d0d0d 100%);
+    }
+
+    .about__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .about__header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(230, 0, 0, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card__icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(230, 0, 0, 0.12);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .card__icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+    }
+
+    .card__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .card__text {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .card__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .card__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .card__list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      padding: 3rem 0;
+    }
+
+    .cta-banner__inner {
+      background: linear-gradient(135deg, rgba(230,0,0,0.15) 0%, var(--bg-card) 50%, rgba(230,0,0,0.08) 100%);
+      border: 1px solid rgba(230, 0, 0, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .cta-banner__title {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .cta-banner__text {
+      color: var(--text-muted);
+      max-width: 480px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 0;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .footer__brand .logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer__brand p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer__heading {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .footer__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer__info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer__info-item svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer__info-item a:hover {
+      color: var(--accent);
+    }
+
+    .footer__bottom {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .footer__copyright {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer__disclaimer {
+      font-size: 0.7rem;
+      color: #555555;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Tablet ── */
+    @media (min-width: 600px) {
+      .top-bar__inner {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .hero__actions {
+        flex-direction: row;
+      }
+
+      .about__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about__grid .card--valores {
+        grid-column: 1 / -1;
+      }
+
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ── Desktop ── */
+    @media (min-width: 900px) {
+      .nav {
+        display: flex;
+      }
+
+      .header__cta {
+        display: inline-flex;
+      }
+
+      .hero__content {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+
+      .hero__visual {
+        justify-content: flex-end;
+      }
+
+      .about__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about__grid .card--valores {
+        grid-column: auto;
+      }
+
+      .footer__grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+
+      .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar__inner">
+      <span class="top-bar__item">
+        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <a href="https://wa.me/5521973208542" target="_blank" rel="noopener">(21) 97320-8542</a>
+      </span>
+      <span class="top-bar__item">
+        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:adm.eliterodas@gmail.com">adm.eliterodas@gmail.com</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Elite Rodas — Página inicial">
+        <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"/></svg>
+        <span class="logo__brand">
+          <span class="logo__elite">ELITE</span>
+          <span class="logo__rodas">RODAS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#hero">Início</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <a href="https://wa.me/5521973208542" class="btn btn--primary header__cta" target="_blank" rel="noopener">
+        Fale Conosco
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__grid-lines" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <div class="hero__text">
+          <div class="hero__badge">
+            <span class="hero__badge-dot" aria-hidden="true"></span>
+            Mobilidade Elétrica · Nova Iguaçu, RJ
+          </div>
+          <h1 class="hero__title">
+            O Futuro da
+            <span>Mobilidade Elétrica</span>
+            Começa Aqui
+          </h1>
+          <p class="hero__description">
+            Transformamos a forma como você se move. Na Elite Rodas, unimos tecnologia de ponta,
+            design arrojado e energia limpa para entregar motos e scooters elétricas que
+            redefinem o asfalto.
+          </p>
+          <div class="hero__actions">
+            <a href="https://wa.me/5521973208542" class="btn btn--primary" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Chamar no WhatsApp
+            </a>
+            <a href="#sobre" class="btn btn--outline">Conheça a Elite</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__card-visual">
+            <svg class="hero__scooter-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g transform="rotate(45, 60, 60)">
+                <rect x="42" y="10" width="8" height="25" rx="4" fill="#E60000" />
+                <rect x="70" y="10" width="8" height="25" rx="4" fill="#E60000" />
+
+                <path d="M30 30 H90 A 10 10 0 0 1 100 40 V 65 A 40 40 0 0 1 60 105 A 40 40 0 0 1 20 65 V 40 A 10 10 0 0 1 30 30 Z" fill="#E60000" />
+
+                <rect x="52" y="100" width="16" height="20" rx="3" fill="#E60000" />
+
+                <path d="M68 40 L45 70 H60 L54 92 L78 62 H63 L68 40 Z" fill="#2A2A2A" />
+              </g>
+            </svg>
+            <div class="hero__stats">
+              <div class="hero__stat">
+                <div class="hero__stat-value">100%</div>
+                <div class="hero__stat-label">Elétrico</div>
+              </div>
+              <div class="hero__stat">
+                <div class="hero__stat-value">0g</div>
+                <div class="hero__stat-label">Emissões</div>
+              </div>
+              <div class="hero__stat">
+                <div class="hero__stat-value">RJ</div>
+                <div class="hero__stat-label">Referência</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section class="about" id="sobre">
+      <div class="container">
+        <header class="about__header">
+          <span class="section-label">Quem Somos</span>
+          <h2 class="section-title">Sobre a Elite Rodas</h2>
+          <p class="section-subtitle">
+            Especialistas em motos e scooters elétricas, combinando inovação,
+            qualidade e atendimento personalizado para transformar sua mobilidade.
+          </p>
+        </header>
+
+        <div class="about__grid">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3 class="card__title">Missão</h3>
+            <p class="card__text">
+              Oferecer produtos e serviços automotivos de alta qualidade, garantindo
+              segurança, estilo e tecnologia aos nossos clientes, sempre com atendimento
+              transparente e personalizado.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </div>
+            <h3 class="card__title">Visão</h3>
+            <p class="card__text">
+              Ser referência no Rio de Janeiro como a melhor opção em rodas, acessórios
+              e serviços automotivos elétricos, reconhecidos pela inovação, excelência
+              e compromisso com o cliente.
+            </p>
+          </article>
+
+          <article class="card card--valores">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            </div>
+            <h3 class="card__title">Valores</h3>
+            <ul class="card__list">
+              <li>Qualidade em cada produto e serviço.</li>
+              <li>Transparência em todos os processos.</li>
+              <li>Compromisso com prazos, segurança e satisfação do cliente.</li>
+              <li>Inovação, trazendo sempre o que há de melhor no mercado.</li>
+              <li>Respeito e relacionamento duradouro com nossos clientes e parceiros.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+      <div class="container">
+        <div class="cta-banner__inner">
+          <h2 class="cta-banner__title">Pronto para eletrificar sua mobilidade?</h2>
+          <p class="cta-banner__text">
+            Entre em contato e descubra as melhores opções em motos e scooters elétricas
+            com a qualidade e o atendimento que só a Elite Rodas oferece.
+          </p>
+          <a href="https://wa.me/5521973208542" class="btn btn--primary" target="_blank" rel="noopener">
+            Falar com um especialista
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="contato">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="logo" aria-label="Elite Rodas">
+            <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"/></svg>
+            <span class="logo__brand">
+              <span class="logo__elite">ELITE</span>
+              <span class="logo__rodas">RODAS</span>
+            </span>
+          </a>
+          <p>
+            Especialistas em motos e scooters elétricas. Tecnologia, estilo e
+            energia limpa para transformar sua forma de se locomover.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Endereço</h3>
+          <div class="footer__info">
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <address style="font-style: normal;">
+                Rua Doutor Barros Júnior, 433<br>
+                Nova Iguaçu / RJ
+              </address>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Contato</h3>
+          <div class="footer__info">
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <a href="https://wa.me/5521973208542" target="_blank" rel="noopener">WhatsApp: (21) 97320-8542</a>
+            </div>
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:adm.eliterodas@gmail.com">adm.eliterodas@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Elite Rodas. Todos os direitos reservados.</p>
+        <p class="footer__disclaimer">Projeto de Demonstração / Portfólio · criado por Vinícius Tavares de Miranda.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
