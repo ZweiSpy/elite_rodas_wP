@@ -531,6 +531,103 @@
       flex-shrink: 0;
     }
 
+    /* ── Catálogo ── */
+    .catalog {
+      padding: 5rem 0;
+      background: var(--bg-primary);
+    }
+
+    .catalog__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .catalog__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(230, 0, 0, 0.2);
+    }
+
+    .product-card__image {
+      aspect-ratio: 1 / 1;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-card__image svg {
+      width: 72px;
+      height: 72px;
+      fill: none;
+      stroke: #3a3a3a;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .product-card__body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-card__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .product-card__specs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      flex: 1;
+    }
+
+    .product-card__specs li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .product-card__specs li::before {
+      content: '⚡';
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .product-card .btn {
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
     /* ── CTA Banner ── */
     .cta-banner {
       padding: 3rem 0;
@@ -775,6 +872,7 @@
       <nav class="nav" aria-label="Navegação principal">
         <a href="#hero">Início</a>
         <a href="#sobre">Sobre Nós</a>
+        <a href="#catalogo">Catálogo</a>
         <a href="#contato">Contato</a>
       </nav>
 
@@ -897,6 +995,155 @@
               <li>Respeito e relacionamento duradouro com nossos clientes e parceiros.</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="catalog" id="catalogo">
+      <div class="container">
+        <header class="catalog__header">
+          <span class="section-label">Nossos Modelos</span>
+          <h2 class="section-title">Escolha sua Elite</h2>
+        </header>
+
+        <div class="catalog__grid">
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter X11</h3>
+              <ul class="product-card__specs">
+                <li>Velocidade até 60 km/h</li>
+                <li>Autonomia 30-40km</li>
+                <li>Banco para 2 pessoas</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20X11." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter X13</h3>
+              <ul class="product-card__specs">
+                <li>Velocidade até 60-70 km/h</li>
+                <li>Freio a Disco</li>
+                <li>Painel Digital</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20X13." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter X16</h3>
+              <ul class="product-card__specs">
+                <li>Design Moderno</li>
+                <li>Alta Performance</li>
+                <li>Especificações em breve...</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20X16." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter X17</h3>
+              <ul class="product-card__specs">
+                <li>Motor 1000W</li>
+                <li>Suporta até 160kg</li>
+                <li>Partida por NFC e Controle Remoto</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20X17." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter X18</h3>
+              <ul class="product-card__specs">
+                <li>Tecnologia Avançada</li>
+                <li>Mobilidade Inteligente</li>
+                <li>Especificações em breve...</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20X18." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter DOT</h3>
+              <ul class="product-card__specs">
+                <li>Motor 1000W</li>
+                <li>Partida na Pulseira NFC</li>
+                <li>Carregador USB</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20DOT." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter M16</h3>
+              <ul class="product-card__specs">
+                <li>Motor 600W</li>
+                <li>Banco para 2 pessoas</li>
+                <li>Farol em LED</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20M16." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Triciclo BIG</h3>
+              <ul class="product-card__specs">
+                <li>Motor 1000W</li>
+                <li>Banco para 3 lugares</li>
+                <li>Marcha Ré e Alarme</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Triciclo%20BIG." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__title">Scooter Raptor</h3>
+              <ul class="product-card__specs">
+                <li>Design Esportivo</li>
+                <li>Máxima Potência</li>
+                <li>Especificações em breve...</li>
+              </ul>
+              <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20detalhes%20e%20valores%20do%20modelo%20Scooter%20Raptor." class="btn btn--outline" target="_blank" rel="noopener">Consultar Modelo</a>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
