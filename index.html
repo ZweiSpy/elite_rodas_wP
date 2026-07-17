@@ -559,41 +559,57 @@
     }
 
     .product-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       border-color: var(--accent);
-      box-shadow: 0 12px 40px rgba(230, 0, 0, 0.2);
+      box-shadow: 0 16px 48px rgba(230, 0, 0, 0.28);
     }
 
     .product-card__image {
+      position: relative;
       aspect-ratio: 1 / 1;
-      background: #1a1a1a;
+      background: #0d0d0d;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
-    .product-card__image svg {
-      width: 72px;
-      height: 72px;
-      fill: none;
-      stroke: #3a3a3a;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .product-card__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      padding: 0;
+      transform: scale(0.99);
+      transform-origin: center center;
+      transition: transform 0.45s ease;
+    }
+
+    .product-card:hover .card-img {
+      transform: scale(1.9);
     }
 
     .product-card__body {
-      padding: 1.5rem;
+      padding: 1.35rem 1.5rem 1.5rem;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
     .product-card__title {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
 
     .product-card__specs {
@@ -1010,8 +1026,8 @@
         <div class="catalog__grid">
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/x11.jpeg" alt="Scooter X11" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X11</h3>
@@ -1025,8 +1041,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/x13.jpeg" alt="Scooter X13" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X13</h3>
@@ -1040,8 +1056,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/x16.jpeg" alt="Scooter X16" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X16</h3>
@@ -1055,8 +1071,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/x17.jpeg" alt="Scooter X17" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X17</h3>
@@ -1070,8 +1086,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/x18.jpeg" alt="Scooter X18" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X18</h3>
@@ -1085,8 +1101,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/dot.jpeg" alt="Scooter DOT" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter DOT</h3>
@@ -1100,8 +1116,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/m16.jpeg" alt="Scooter M16" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter M16</h3>
@@ -1115,8 +1131,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/triciclo.jpeg" alt="Triciclo BIG" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Triciclo BIG</h3>
@@ -1130,8 +1146,8 @@
           </article>
 
           <article class="product-card">
-            <div class="product-card__image" aria-hidden="true">
-              <svg viewBox="0 0 64 64"><circle cx="16" cy="48" r="8"/><circle cx="48" cy="48" r="8"/><path d="M16 40 L28 28 L42 26 L48 34"/><path d="M28 28 L32 18 L42 16"/><rect x="40" y="12" width="10" height="6" rx="1"/></svg>
+            <div class="product-card__image">
+              <img src="./assets/raptor.jpeg" alt="Scooter Raptor" class="card-img">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter Raptor</h3>
