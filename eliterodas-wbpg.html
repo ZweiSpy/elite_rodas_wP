@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Elite Rodas — Motos e scooters elétricas. Tecnologia, estilo e mobilidade sustentável no Rio de Janeiro.">
-  <title>Elite Rodas | Motos & Scooters Elétricas</title>
+  <title>Elite Rodas | Motos &amp; Scooters Elétricas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     /* ── Reset & Base ── */
     *, *::before, *::after {
@@ -677,57 +675,71 @@
     }
 
     .product-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       border-color: var(--accent);
-      box-shadow: 0 16px 48px rgba(230, 0, 0, 0.28);
+      box-shadow: 0 12px 40px rgba(230, 0, 0, 0.2);
     }
 
     .product-card__image {
-      position: relative;
       aspect-ratio: 1 / 1;
-      background: #0d0d0d;
+      background: #1a1a1a;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      padding: 0.7rem;
+      box-sizing: border-box;
+      position: relative;
     }
 
     .product-card__image::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+      inset: 0.7rem;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.08);
       pointer-events: none;
-      z-index: 1;
     }
 
-    .card-img {
+    .product-card__image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
-      padding: 0;
-      transform: scale(0.99);
-      transform-origin: center center;
-      transition: transform 0.45s ease;
+      object-position: center 42%;
+      display: block;
+      border-radius: 0.8rem;
+      background: #111;
+      transition: transform var(--transition), filter var(--transition);
+      transform: scale(1.04);
     }
 
-    .product-card:hover .card-img {
-      transform: scale(1.9);
+    .product-card:hover .product-card__image img {
+      transform: scale(1.06);
+      filter: brightness(1.03);
+    }
+
+    .product-card__image svg {
+      width: 72px;
+      height: 72px;
+      fill: none;
+      stroke: #3a3a3a;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .product-card__body {
-      padding: 1.35rem 1.5rem 1.5rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
 
     .product-card__title {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 0.85rem;
+      margin-bottom: 1rem;
     }
 
     .product-card__specs {
@@ -982,11 +994,11 @@
   <div class="top-bar">
     <div class="container top-bar__inner">
       <span class="top-bar__item">
-        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
         <a href="https://wa.me/5521973208542" target="_blank" rel="noopener">(21) 97320-8542</a>
       </span>
       <span class="top-bar__item">
-        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
         <a href="mailto:adm.eliterodas@gmail.com">adm.eliterodas@gmail.com</a>
       </span>
     </div>
@@ -996,7 +1008,7 @@
   <header class="header">
     <div class="container header__inner">
       <a href="#" class="logo" aria-label="Elite Rodas — Página inicial">
-        <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"/></svg>
+        <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"></path></svg>
         <span class="logo__brand">
           <span class="logo__elite">ELITE</span>
           <span class="logo__rodas">RODAS</span>
@@ -1039,7 +1051,7 @@
           </p>
           <div class="hero__actions">
             <a href="https://wa.me/5521973208542" class="btn btn--primary" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
               Chamar no WhatsApp
             </a>
             <a href="#sobre" class="btn btn--outline">Conheça a Elite</a>
@@ -1050,14 +1062,14 @@
           <div class="hero__card-visual">
             <svg class="hero__scooter-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
               <g transform="rotate(45, 60, 60)">
-                <rect x="42" y="10" width="8" height="25" rx="4" fill="#E60000" />
-                <rect x="70" y="10" width="8" height="25" rx="4" fill="#E60000" />
+                <rect x="42" y="10" width="8" height="25" rx="4" fill="#E60000"></rect>
+                <rect x="70" y="10" width="8" height="25" rx="4" fill="#E60000"></rect>
 
-                <path d="M30 30 H90 A 10 10 0 0 1 100 40 V 65 A 40 40 0 0 1 60 105 A 40 40 0 0 1 20 65 V 40 A 10 10 0 0 1 30 30 Z" fill="#E60000" />
+                <path d="M30 30 H90 A 10 10 0 0 1 100 40 V 65 A 40 40 0 0 1 60 105 A 40 40 0 0 1 20 65 V 40 A 10 10 0 0 1 30 30 Z" fill="#E60000"></path>
 
-                <rect x="52" y="100" width="16" height="20" rx="3" fill="#E60000" />
+                <rect x="52" y="100" width="16" height="20" rx="3" fill="#E60000"></rect>
 
-                <path d="M68 40 L45 70 H60 L54 92 L78 62 H63 L68 40 Z" fill="#2A2A2A" />
+                <path d="M68 40 L45 70 H60 L54 92 L78 62 H63 L68 40 Z" fill="#2A2A2A"></path>
               </g>
             </svg>
             <div class="hero__stats">
@@ -1152,7 +1164,7 @@
         <div class="about__grid">
           <article class="card">
             <div class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
             </div>
             <h3 class="card__title">Missão</h3>
             <p class="card__text">
@@ -1164,7 +1176,7 @@
 
           <article class="card">
             <div class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
             </div>
             <h3 class="card__title">Visão</h3>
             <p class="card__text">
@@ -1176,7 +1188,7 @@
 
           <article class="card card--valores">
             <div class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path></svg>
             </div>
             <h3 class="card__title">Valores</h3>
             <ul class="card__list">
@@ -1203,7 +1215,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/x11.jpeg" alt="Scooter X11" class="card-img">
+              <img src="assets/X11.jpeg" alt="Scooter X11" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X11</h3>
@@ -1218,7 +1230,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/x13.jpeg" alt="Scooter X13" class="card-img">
+              <img src="assets/X13.jpeg" alt="Scooter X13" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X13</h3>
@@ -1233,7 +1245,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/x16.jpeg" alt="Scooter X16" class="card-img">
+              <img src="assets/X16.jpeg" alt="Scooter X16" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X16</h3>
@@ -1248,7 +1260,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/x17.jpeg" alt="Scooter X17" class="card-img">
+              <img src="assets/X17.jpeg" alt="Scooter X17" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X17</h3>
@@ -1263,7 +1275,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/x18.jpeg" alt="Scooter X18" class="card-img">
+              <img src="assets/x18.jpeg" alt="Scooter X18" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter X18</h3>
@@ -1278,7 +1290,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/dot.jpeg" alt="Scooter DOT" class="card-img">
+              <img src="assets/DOT.jpeg" alt="Scooter DOT" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter DOT</h3>
@@ -1293,7 +1305,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/m16.jpeg" alt="Scooter M16" class="card-img">
+              <img src="assets/M16.jpeg" alt="Scooter M16" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter M16</h3>
@@ -1308,7 +1320,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/triciclo.jpeg" alt="Triciclo BIG" class="card-img">
+              <img src="assets/Triciclo.jpeg" alt="Triciclo BIG" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Triciclo BIG</h3>
@@ -1323,7 +1335,7 @@
 
           <article class="product-card">
             <div class="product-card__image">
-              <img src="./assets/raptor.jpeg" alt="Scooter Raptor" class="card-img">
+              <img src="assets/Raptor.jpeg" alt="Scooter Raptor" loading="lazy">
             </div>
             <div class="product-card__body">
               <h3 class="product-card__title">Scooter Raptor</h3>
@@ -1363,7 +1375,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="#" class="logo" aria-label="Elite Rodas">
-            <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"/></svg>
+            <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"></path></svg>
             <span class="logo__brand">
               <span class="logo__elite">ELITE</span>
               <span class="logo__rodas">RODAS</span>
@@ -1379,7 +1391,7 @@
           <h3 class="footer__heading">Endereço</h3>
           <div class="footer__info">
             <div class="footer__info-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></svg>
               <address style="font-style: normal;">
                 Rua Doutor Barros Júnior, 433<br>
                 Nova Iguaçu / RJ
@@ -1392,41 +1404,36 @@
           <h3 class="footer__heading">Contato</h3>
           <div class="footer__info">
             <div class="footer__info-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
               <a href="https://wa.me/5521973208542" target="_blank" rel="noopener">WhatsApp: (21) 97320-8542</a>
             </div>
             <div class="footer__info-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
               <a href="mailto:adm.eliterodas@gmail.com">adm.eliterodas@gmail.com</a>
             </div>
             <div class="footer__info-item">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
               </svg>
-              <a href="https://www.instagram.com/eliterodas021?igsh=MWloM3k5ZHllZTZhOA%3D%3D&utm_source=qr" target="_blank" rel="noopener">@eliterodas021</a>
+              <a href="https://www.instagram.com/eliterodas021?igsh=MWloM3k5ZHllZTZhOA%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener">@eliterodas021</a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026 Elite Rodas. Todos os direitos reservados.</p>
+        <p class="footer__copyright">© 2026 Elite Rodas. Todos os direitos reservados.</p>
         <p class="footer__disclaimer">Projeto de Demonstração / Portfólio · criado por Vinícius Tavares de Miranda.</p>
       </div>
     </div>
   </footer>
 
-  <a
-    href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas."
-    class="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Fale conosco pelo WhatsApp"
-  >
+  <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
     </svg>
   </a>
 
-</body>
-</html>
+
+
+</body></html>
