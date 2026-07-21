@@ -206,14 +206,15 @@
 
     .nav {
       display: none;
-      gap: 2rem;
+      gap: 1.35rem;
     }
 
     .nav a {
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       color: var(--text-secondary);
       position: relative;
+      white-space: nowrap;
     }
 
     .nav a::after {
@@ -785,6 +786,137 @@
       margin-top: 1.5rem;
     }
 
+    /* ── Assistência Técnica ── */
+    .assistencia-tecnica {
+      padding: 5rem 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 20%, rgba(230, 0, 0, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(230, 0, 0, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #0d0d0d 0%, var(--bg-primary) 100%);
+      position: relative;
+    }
+
+    .assistencia-tecnica__content {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, rgba(42, 42, 42, 0.98), rgba(18, 18, 18, 0.96));
+      border: 1px solid rgba(230, 0, 0, 0.22);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+    }
+
+    .assistencia-tecnica__content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent 70%);
+    }
+
+    .assistencia-tecnica__inner {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .assistencia-tecnica__title {
+      font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .assistencia-tecnica__copy {
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 0;
+      max-width: 720px;
+    }
+
+    .assistencia-tecnica__copy strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .assistencia-tecnica__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .assistencia-tecnica__list li {
+      position: relative;
+      padding: 0.85rem 1rem 0.85rem 2.25rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .assistencia-tecnica__list li::before {
+      content: '';
+      position: absolute;
+      left: 0.95rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(230, 0, 0, 0.15);
+    }
+
+    .assistencia-tecnica__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .assistencia-tecnica__actions .btn {
+      min-width: 220px;
+    }
+
+    @media (min-width: 700px) {
+      .assistencia-tecnica__list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.85rem;
+      }
+
+      .assistencia-tecnica__list li {
+        padding: 1rem 1rem 1rem 2.1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .assistencia-tecnica__content {
+        padding: 1.75rem 1.25rem;
+      }
+
+      .assistencia-tecnica__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .assistencia-tecnica__actions .btn {
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+      }
+    }
+
     /* ── CTA Banner ── */
     .cta-banner {
       padding: 3rem 0;
@@ -1042,6 +1174,7 @@
         <a href="#hero">Início</a>
         <a href="#sobre">Sobre Nós</a>
         <a href="#catalogo">Catálogo</a>
+        <a href="#assistencia-tecnica">Assistência Técnica</a>
         <a href="#contato">Contato</a>
       </nav>
 
@@ -1371,6 +1504,40 @@
             </div>
           </article>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- Assistência Técnica -->
+    <section class="assistencia-tecnica" id="assistencia-tecnica" aria-labelledby="assistencia-tecnica-title">
+      <div class="container">
+        <div class="assistencia-tecnica__content">
+          <div class="assistencia-tecnica__inner">
+            <div>
+              <span class="section-label">Assistência Técnica</span>
+              <h2 class="assistencia-tecnica__title" id="assistencia-tecnica-title">
+                Sua scooter parou? Volte a rodar pela cidade sem complicações!
+              </h2>
+              <p class="assistencia-tecnica__copy">
+                Na <strong>Elite Rodas</strong>, cuidamos da sua scooter elétrica com especialistas em mobilidade urbana. De trocas de pneus a manutenção de baterias, deixamos seu veículo pronto para rodar com total segurança.
+              </p>
+            </div>
+
+            <ul class="assistencia-tecnica__list">
+              <li>Especialistas em motores e baterias elétricas</li>
+              <li>Diagnóstico preciso e peças de qualidade</li>
+              <li>Garantia de serviço para sua tranquilidade</li>
+            </ul>
+
+            <div class="assistencia-tecnica__actions">
+              <a href="https://wa.me/5521973208542?text=Oi%2C%20vim%20do%20site%20da%20Elite%20Rodas%2C%20e%20preciso%20falar%20com%20o%20T%C3%A9cnico%20sobre%20uma%20Revis%C3%A3o%20ou%20Defeito" class="btn btn--primary" target="_blank" rel="noopener">
+                Falar com Técnico no WhatsApp
+              </a>
+              <a href="https://wa.me/5521973208542?text=Oi%2C%20vim%20do%20site%20da%20Elite%20Rodas%20e%20quero%20saber%20o%20Or%C3%A7amento%20para%20a%20Assist%C3%AAncia%20T%C3%A9cnica." class="btn btn--outline" target="_blank" rel="noopener">
+                Solicitar Orçamento
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
