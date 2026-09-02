@@ -1038,6 +1038,69 @@
       border-bottom-color: #777777;
     }
 
+    .footer__legal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1rem;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer__legal a {
+      font-size: 0.7rem;
+      color: #555555;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.25s ease;
+    }
+
+    .footer__legal a:hover {
+      color: #999999;
+    }
+
+    .footer__legal-sep {
+      color: #444444;
+      font-size: 0.65rem;
+      user-select: none;
+    }
+
+    .footer__social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      width: 100%;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer__social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    }
+
+    .footer__social a:hover {
+      color: var(--accent);
+      border-color: rgba(230, 0, 0, 0.45);
+      background: rgba(230, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .footer__social svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
     /* ── WhatsApp Float Button ── */
     .whatsapp-float {
       position: fixed;
@@ -1137,8 +1200,16 @@
 
       .footer__bottom {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
         text-align: left;
+      }
+
+      .footer__social {
+        width: 100%;
+        justify-content: flex-start;
+        order: -1;
+        margin-bottom: 0.75rem;
       }
     }
   </style>
@@ -1612,8 +1683,25 @@
       </div>
 
       <div class="footer__bottom">
+        <!-- Redes sociais: substitua os href abaixo pelos links oficiais (ver README.md) -->
+        <div class="footer__social" aria-label="Redes sociais">
+          <a href="#facebook" target="_blank" rel="noopener" aria-label="Facebook da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="#youtube" target="_blank" rel="noopener" aria-label="YouTube da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a2.97 2.97 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A2.97 2.97 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 2.97 2.97 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a2.97 2.97 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.75 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+          </a>
+          <a href="#tiktok" target="_blank" rel="noopener" aria-label="TikTok da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.16 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.2 8.2 0 0 0 4.8 1.53V6.84a4.85 4.85 0 0 1-1.05-.15z"/></svg>
+          </a>
+        </div>
+        <nav class="footer__legal" aria-label="Documentos legais">
+          <a href="politica-de-privacidade.html">Política de Privacidade</a>
+          <span class="footer__legal-sep" aria-hidden="true">·</span>
+          <a href="termos-de-uso.html">Termos de Uso</a>
+        </nav>
         <p class="footer__copyright">&copy; 2026 Elite Rodas. Todos os direitos reservados.</p>
-        <p class="footer__disclaimer">Projeto de Demonstração / Portfólio · criado por <a href="https://vinicius-archtech.vercel.app" target="_blank" rel="noopener noreferrer">Vinícius Tavares de Miranda</a>.</p>
+        <p class="footer__disclaimer">Projeto de Demonstração / Portfólio · criado por <a href="https://zweicoorp.com.br" target="_blank" rel="noopener noreferrer">Vinícius Tavares de Miranda</a>.</p>
       </div>
     </div>
   </footer>
