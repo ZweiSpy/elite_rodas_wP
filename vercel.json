@@ -1,9 +1,24 @@
-﻿{
+{
   "rewrites": [
-    { "source": "/auth", "destination": "/auth/index.html" },
-    { "source": "/auth/", "destination": "/auth/index.html" },
-    { "source": "/auth/login", "destination": "/api/auth/login" },
-    { "source": "/auth/callback", "destination": "/api/auth/callback" },
-    { "source": "/auth/consume", "destination": "/api/auth/consume" }
+    {
+      "source": "/auth",
+      "destination": "/auth/index.html"
+    },
+    {
+      "source": "/auth/",
+      "destination": "/auth/index.html"
+    },
+    {
+      "source": "/auth/login",
+      "destination": "/api/auth/login"
+    },
+    {
+      "source": "/auth/callback",
+      "destination": "/api/auth/callback"
+    },
+    {
+      "source": "/auth/consume",
+      "destination": "/api/auth/consume"
+    }
   ]
 }
