@@ -1,0 +1,8 @@
+﻿{
+  "name": "elite-rodas-wp",
+  "version": "1.0.0",
+  "description": "Site institucional e autenticacao OAuth da Elite Rodas",
+  "scripts": {
+    "test": "node test_oauth_flow.js"
+  }
+}
