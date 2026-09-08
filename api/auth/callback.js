@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Handler do Callback OAuth do Olist.
  * Recebe o código temporário via redirect do Olist e deposita no Redis com TTL de 120s.
  */

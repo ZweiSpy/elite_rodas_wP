@@ -1,4 +1,4 @@
-﻿const assert = require("assert");
+const assert = require("assert");
 const http = require("http");
 
 async function runTests() {

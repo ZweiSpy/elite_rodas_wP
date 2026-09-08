@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Rota para iniciar a autorização OAuth com o Olist.
  * Redireciona o usuário para o endpoint oficial do Olist Accounts.
  */

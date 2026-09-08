@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Utilitário de comunicação com Upstash Redis / Vercel KV via REST API nativa.
  * Usa fetch nativo do Node 18+ (sem dependências externas necessárias).
  */

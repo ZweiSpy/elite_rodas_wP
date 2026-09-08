@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Endpoint de consumo autenticado one-shot para o Bot (Opção B).
  * Responde a GET ou POST em /api/auth/consume.
  */
