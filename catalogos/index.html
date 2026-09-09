@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Motos e Scooters Elétricas — Elite Rodas</title>
+  <meta name="description" content="Conheça a linha completa de motos e scooters elétricas da Elite Rodas. Modelos modernos, alta performance, economia e sustentabilidade.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Catálogo de Motos e Scooters Elétricas — Elite Rodas">
+  <meta property="og:description" content="Descubra os modelos elétricos da Elite Rodas: X11, X13, X16, DOT, M16, Triciclo BIG, Raptor e AG MAX.">
+  <meta property="og:image" content="../assets/opengraph-Image.jpeg">
+
+  <link rel="icon" type="image/jpeg" href="../assets/favicon.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="catalogo.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar__inner">
+      <span class="top-bar__item">
+        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <a href="https://wa.me/5521973208542" target="_blank" rel="noopener">WhatsApp Comercial: (21) 97320-8542</a>
+      </span>
+      <span class="top-bar__item">
+        <svg class="top-bar__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:adm.eliterodas@gmail.com">adm.eliterodas@gmail.com</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../" class="logo" aria-label="Elite Rodas — Página inicial">
+        <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"/></svg>
+        <span class="logo__brand">
+          <span class="logo__elite">ELITE</span>
+          <span class="logo__rodas">RODAS</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="../#hero">Início</a>
+        <a href="../#sobre">Sobre Nós</a>
+        <a href="/catalogos/" class="active" aria-current="page">Catálogo</a>
+        <a href="../#assistencia-tecnica">Assistência Técnica</a>
+        <a href="../#contato">Contato</a>
+      </nav>
+
+      <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20o%20cat%C3%A1logo%20de%20motos%20el%C3%A9tricas." class="btn btn--primary header__cta" target="_blank" rel="noopener">
+        Falar no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="catalog-page">
+    <div class="container">
+      
+      <!-- Breadcrumb -->
+      <nav class="catalog-breadcrumb" aria-label="Trilha de navegação">
+        <a href="../">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          Voltar para a página inicial
+        </a>
+      </nav>
+
+      <!-- Cabeçalho do Catálogo -->
+      <header class="catalog-page__header">
+        <span class="section-label">Linha Completa</span>
+        <h1 class="catalog-page__title">Nossas Motos e Scooters Elétricas</h1>
+        <p class="catalog-page__subtitle">
+          Selecione um modelo para visualizar detalhes, cores disponíveis e solicitar atendimento imediato com nossa equipe comercial no WhatsApp.
+        </p>
+      </header>
+
+      <!-- Grade de Cards Dinâmica -->
+      <div id="catalog-grid" class="catalog-grid" aria-label="Modelos de motos e scooters elétricas">
+        <!-- Renderizado dinamicamente via catalogo-data.js -->
+        <noscript>
+          <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">
+            Por favor, ative o JavaScript no seu navegador para visualizar o catálogo interativo.
+          </p>
+        </noscript>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal Interativo por Modelo -->
+  <div id="catalog-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-panel">
+      
+      <!-- Botão de Fechar -->
+      <button type="button" class="modal-close-btn" id="modal-close" aria-label="Fechar janela de detalhes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+
+      <div class="modal-layout">
+        
+        <!-- Galeria de Imagens -->
+        <div class="modal-gallery">
+          <div class="modal-gallery__viewport">
+            <img id="modal-img" src="" alt="" class="modal-gallery__img">
+          </div>
+          <div id="modal-thumbs" class="modal-gallery__thumbs" aria-label="Miniaturas da galeria"></div>
+        </div>
+
+        <!-- Informações e Ação Direta -->
+        <div class="modal-info">
+          
+          <div class="modal-info__header">
+            <h2 id="modal-title" class="modal-info__title"></h2>
+            
+            <div class="modal-info__specs-title">Destaques do Modelo</div>
+            <ul id="modal-specs" class="modal-info__specs-list"></ul>
+          </div>
+
+          <!-- Seletor de Cores -->
+          <div class="modal-colors">
+            <div class="modal-colors__header">
+              <span>Cor:</span>
+              <span id="modal-color-name" class="modal-colors__active-name"></span>
+            </div>
+            <div id="modal-color-swatches" class="modal-colors__list" role="radiogroup" aria-label="Selecione uma cor"></div>
+          </div>
+
+          <!-- CTA Comercial Agressivo -->
+          <div class="modal-actions">
+            <a id="modal-wa-cta" href="#" target="_blank" rel="noopener noreferrer" class="btn--wa-aggressive">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <span id="modal-wa-label">Quero informações agora</span>
+            </a>
+            <p class="modal-actions__note">Fale diretamente com nossa equipe de vendas no WhatsApp Comercial.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer (Spec de 3 Zonas) -->
+  <footer class="footer" id="contato">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="../" class="logo" aria-label="Elite Rodas">
+            <svg class="logo__bolt" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08 7-8.34V3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15-7 8.18V21z"/></svg>
+            <span class="logo__brand">
+              <span class="logo__elite">ELITE</span>
+              <span class="logo__rodas">RODAS</span>
+            </span>
+          </a>
+          <p>
+            Especialistas em motos e scooters elétricas. Tecnologia, estilo e
+            energia limpa para transformar sua forma de se locomover.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Endereço</h3>
+          <div class="footer__info">
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <address style="font-style: normal;">
+                Rua Doutor Barros Júnior, 433<br>
+                Nova Iguaçu / RJ
+              </address>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer__heading">Contato</h3>
+          <div class="footer__info">
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <a href="https://wa.me/5521973208542" target="_blank" rel="noopener">WhatsApp Comercial: (21) 97320-8542</a>
+            </div>
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <a href="https://wa.me/5521993061329" target="_blank" rel="noopener">WhatsApp SAC / Pós-vendas: (21) 99306-1329</a>
+            </div>
+            <div class="footer__info-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:adm.eliterodas@gmail.com">adm.eliterodas@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__utility">
+        <div class="footer__social" aria-label="Redes sociais">
+          <a href="https://www.instagram.com/eliterodas021" target="_blank" rel="noopener" aria-label="Instagram da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/p/Elite-rodas-61563207035024/" target="_blank" rel="noopener" aria-label="Facebook da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@EliteRodas" target="_blank" rel="noopener" aria-label="YouTube da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a2.97 2.97 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A2.97 2.97 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 2.97 2.97 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a2.97 2.97 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.75 15.5v-7l6.2 3.5-6.2 3.5z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@elite.rodas2" target="_blank" rel="noopener" aria-label="TikTok da Elite Rodas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.16 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.2 8.2 0 0 0 4.8 1.53V6.84a4.85 4.85 0 0 1-1.05-.15z"/></svg>
+          </a>
+        </div>
+        <nav class="footer__legal" aria-label="Documentos legais">
+          <a href="../politica-de-privacidade.html">Política de Privacidade</a>
+          <span class="footer__legal-sep" aria-hidden="true">·</span>
+          <a href="../termos-de-uso.html">Termos de Uso</a>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; 2026 Elite Rodas · Elite Rodas Comercio de Veiculos e Acessorios Automotivos LTDA · CNPJ 31.915.664/0001-04
+        </p>
+        <p class="footer__disclaimer">Desenvolvido por <a href="https://zweicoorp.com.br" target="_blank" rel="noopener noreferrer">Vinícius Tavares de Miranda</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flutuante -->
+  <a
+    href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Vim%20pelo%20cat%C3%A1logo%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas."
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Fale conosco pelo WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="catalogo-data.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      const WA_PHONE = '5521973208542';
+      const models = window.CATALOGO_MODELOS || [];
+      const grid = document.getElementById('catalog-grid');
+      const modal = document.getElementById('catalog-modal');
+      const modalClose = document.getElementById('modal-close');
+      const modalTitle = document.getElementById('modal-title');
+      const modalImg = document.getElementById('modal-img');
+      const modalThumbs = document.getElementById('modal-thumbs');
+      const modalSpecs = document.getElementById('modal-specs');
+      const modalColors = document.getElementById('modal-color-swatches');
+      const modalColorName = document.getElementById('modal-color-name');
+      const modalWaCta = document.getElementById('modal-wa-cta');
+      const modalWaLabel = document.getElementById('modal-wa-label');
+
+      let currentModel = null;
+      let currentColor = null;
+      let currentPhotoIndex = 0;
+      let lastFocusedElement = null;
+
+      function buildWhatsAppUrl(text) {
+        return 'https://wa.me/' + WA_PHONE + '?text=' + encodeURIComponent(text);
+      }
+
+      // Renderizar cards na grade
+      function renderGrid() {
+        if (!grid || !models.length) return;
+        grid.innerHTML = '';
+
+        models.forEach((model, index) => {
+          const card = document.createElement('article');
+          card.className = 'product-card';
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', 'Ver detalhes e cores de ' + model.name);
+
+          const specsHtml = (model.specs || [])
+            .map(s => '<li>' + s + '</li>')
+            .join('');
+
+          const waUrl = buildWhatsAppUrl(model.waText);
+
+          card.innerHTML = `
+            <div class="product-card__image-container">
+              <span class="product-card__badge">100% Elétrica</span>
+              <img 
+                src="${model.cardImage}" 
+                alt="${model.name}" 
+                class="product-card__img" 
+                loading="${index < 3 ? 'eager' : 'lazy'}"
+              >
+            </div>
+            <div class="product-card__body">
+              <h2 class="product-card__title">${model.name}</h2>
+              <ul class="product-card__specs">
+                ${specsHtml}
+              </ul>
+              <div class="product-card__actions">
+                <button type="button" class="btn btn--primary js-open-modal" data-id="${model.id}">
+                  Ver Detalhes e Cores
+                </button>
+                <a href="${waUrl}" class="btn btn--outline" target="_blank" rel="noopener">
+                  Consultar no WhatsApp
+                </a>
+              </div>
+            </div>
+          `;
+
+          // Abrir modal ao clicar no card (exceto se clicar no link do WhatsApp)
+          card.addEventListener('click', function (e) {
+            if (e.target.closest('a')) return;
+            openModal(model, card);
+          });
+
+          card.addEventListener('keydown', function (e) {
+            if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) {
+              e.preventDefault();
+              openModal(model, card);
+            }
+          });
+
+          grid.appendChild(card);
+        });
+      }
+
+      // Atualizar foto ativa na galeria do modal
+      function setModalPhoto(photoUrl, index) {
+        currentPhotoIndex = index;
+        modalImg.src = photoUrl;
+        modalImg.alt = currentModel.name + ' - ' + currentColor.label;
+
+        // Atualizar status visual dos thumbnails
+        const thumbButtons = modalThumbs.querySelectorAll('.modal-gallery__thumb-btn');
+        thumbButtons.forEach((btn, idx) => {
+          btn.classList.toggle('is-active', idx === index);
+          btn.setAttribute('aria-selected', idx === index ? 'true' : 'false');
+        });
+      }
+
+      // Definir cor ativa do modal
+      function setModalColor(colorObj) {
+        currentColor = colorObj;
+        modalColorName.textContent = colorObj.label;
+
+        // Atualizar swatches
+        const swatchBtns = modalColors.querySelectorAll('.modal-color-swatch');
+        swatchBtns.forEach(btn => {
+          const isSelected = btn.getAttribute('data-color-id') === colorObj.id;
+          btn.classList.toggle('is-active', isSelected);
+          btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+        });
+
+        // Atualizar galeria para a nova cor
+        const photos = colorObj.photos && colorObj.photos.length ? colorObj.photos : [currentModel.cardImage];
+        modalThumbs.innerHTML = '';
+
+        if (photos.length > 1) {
+          modalThumbs.hidden = false;
+          photos.forEach((photo, idx) => {
+            const thumbBtn = document.createElement('button');
+            thumbBtn.type = 'button';
+            thumbBtn.className = 'modal-gallery__thumb-btn' + (idx === 0 ? ' is-active' : '');
+            thumbBtn.setAttribute('role', 'tab');
+            thumbBtn.setAttribute('aria-label', 'Foto ' + (idx + 1) + ' de ' + currentModel.name);
+            thumbBtn.innerHTML = `<img src="${photo}" alt="">`;
+            thumbBtn.addEventListener('click', () => setModalPhoto(photo, idx));
+            modalThumbs.appendChild(thumbBtn);
+          });
+        } else {
+          modalThumbs.hidden = true;
+        }
+
+        setModalPhoto(photos[0], 0);
+
+        // Atualizar CTA WhatsApp com texto dinâmico incluindo a cor escolhida
+        let customWaText = currentModel.waText;
+        if (colorObj.id !== 'ref') {
+          customWaText = 'Olá! Quero informações e valores do modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
+        }
+        modalWaCta.href = buildWhatsAppUrl(customWaText);
+      }
+
+      // Abrir Modal
+      function openModal(model, triggerEl) {
+        lastFocusedElement = triggerEl || document.activeElement;
+        currentModel = model;
+
+        modalTitle.textContent = model.name;
+        modalWaLabel.textContent = model.waCtaLabel || 'Quero informações agora';
+
+        // Specs
+        modalSpecs.innerHTML = (model.specs || [])
+          .map(s => '<li>' + s + '</li>')
+          .join('');
+
+        // Cores
+        modalColors.innerHTML = '';
+        const colors = model.colors && model.colors.length ? model.colors : [
+          { id: 'ref', label: 'Referência', swatch: '#666666', photos: [model.cardImage] }
+        ];
+
+        colors.forEach((color, idx) => {
+          const swatchBtn = document.createElement('button');
+          swatchBtn.type = 'button';
+          swatchBtn.className = 'modal-color-swatch' + (idx === 0 ? ' is-active' : '');
+          swatchBtn.setAttribute('role', 'radio');
+          swatchBtn.setAttribute('data-color-id', color.id);
+          swatchBtn.setAttribute('aria-label', color.label);
+          swatchBtn.innerHTML = `<span class="modal-color-swatch__circle" style="background-color: ${color.swatch};"></span>`;
+          swatchBtn.addEventListener('click', () => setModalColor(color));
+          modalColors.appendChild(swatchBtn);
+        });
+
+        setModalColor(colors[0]);
+
+        modal.hidden = false;
+        requestAnimationFrame(() => {
+          modal.classList.add('is-active');
+          document.body.classList.add('modal-open');
+          modalClose.focus();
+        });
+      }
+
+      // Fechar Modal
+      function closeModal() {
+        if (modal.hidden) return;
+        modal.classList.remove('is-active');
+        document.body.classList.remove('modal-open');
+
+        setTimeout(() => {
+          modal.hidden = true;
+          if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus();
+          }
+        }, 250);
+      }
+
+      // Eventos do modal
+      modalClose.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hidden) {
+          closeModal();
+        }
+      });
+
+      // Inicializar
+      renderGrid();
+    })();
+  </script>
+</body>
+</html>

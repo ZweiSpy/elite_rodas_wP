@@ -34,11 +34,15 @@ Os links aparecem no rodapé de [`index.html`](index.html), no bloco `nav.footer
 
 ## Estrutura rápida
 
-- `index.html` — página principal
+- `index.html` — página principal (institucional, menu e chamada para o catálogo)
+- `catalogos/index.html` — página pública do catálogo dedicado (`/catalogos/`)
+- `catalogos/catalogo-data.js` — fonte de dados dos 8 modelos oficiais e opções de cores
+- `catalogos/catalogo.css` — estilos da grade de produtos e modal interativo
 - `styles.css` — folha de estilos externa compartilhada (landing page e páginas legais)
 - `politica-de-privacidade.html` — política LGPD
 - `termos-de-uso.html` — termos de uso
 - `AGENTS.md` — papéis e regras para agentes
 - `PLAN.md` — escopo e dados confirmados do PO
+- `SDD.md` — especificação técnica de design do catálogo
 - `assets/` — imagens dos modelos, loja, favicon e Open Graph
 - `.gitignore` — ignora `Backup_index1.html`

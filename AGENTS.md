@@ -4,72 +4,97 @@
 
 | Papel | Responsável | Função |
 |-------|-------------|--------|
-| PO (Product Owner) | Vinícius Tavares de Miranda | Dados de negócio, aprovação de textos legais e escopo |
-| PM / Arquiteto | Cursor + PO | Spec-Driven (SSD): documenta em `PLAN.md` / `AGENTS.md`, revisão |
-| Desenvolvedor | Antigravity | Implementação HTML/CSS, `README.md` e assets conforme `PLAN.md` |
+| PO (Product Owner) | Vinícius Tavares de Miranda | Dados de negócio, aprovação de textos e escopo |
+| PM / Arquiteto | Cursor + PO | Spec-Driven: documentos-verdade + auditorias reais |
+| Desenvolvedor | Antigravity | Implementação HTML/CSS/JS, `README.md` e assets conforme docs |
 
-**Divisão obrigatória:** Cursor/PM atualiza **somente** os arquivos Markdown de especificação (`PLAN.md`, `AGENTS.md`). Antigravity implementa o código (HTML/CSS e demais arquivos de entrega listados no plano). Não inverter esses papéis.
+**Documentos-verdade (Cursor):** [`PLAN.md`](PLAN.md), [`SDD.md`](SDD.md), [`AGENTS.md`](AGENTS.md).
+
+**Divisão obrigatória:** Cursor/PM atualiza **somente** esses Markdown de especificação. Antigravity implementa o código. Não inverter.
 
 ## Fluxo de decisão
 
-1. PO define requisitos e dados jurídicos confirmados.
-2. PM/Arquiteto documenta em `PLAN.md`.
-3. Antigravity implementa conforme o plano.
-4. **Se faltar dado ou houver ambiguidade jurídica → parar e perguntar ao PO.** Nunca inventar informações.
+1. PO define requisitos e dados confirmados.
+2. Cursor documenta em `PLAN.md` / `SDD.md` / `AGENTS.md`.
+3. Antigravity implementa conforme os docs.
+4. Cursor audita (escopo, BOM, JSON, links) antes de merge/`main`.
+5. **Se faltar dado ou houver ambiguidade → parar e perguntar ao PO.** Nunca inventar informações.
 
 ## Stack
 
-- HTML estático
-- CSS em **arquivo externo** (stylesheet linkado; extrair do embutido conforme pendência em `PLAN.md`)
-- Assets locais em `assets/`
+- HTML estático na raiz + páginas em pastas (`catalogos/`, `auth/`)
+- CSS externo (`styles.css`, e/ou CSS de página)
+- Assets em `assets/`
+- Serverless em `api/` (OAuth Olist — fora do escopo do catálogo)
 - Deploy: Vercel (Hobby)
+
+## Lógica de funcionamento na Vercel (obrigatório conhecer)
+
+| Recurso | Comportamento |
+|---------|----------------|
+| Arquivos estáticos | `index.html` → `/`; `catalogos/index.html` → **`/catalogos/`**; `auth/index.html` → `/auth` (rewrite) |
+| `api/**/*.js` | Serverless Functions em `/api/...` |
+| [`vercel.json`](vercel.json) | Rewrites OAuth (`/auth/login` → `/api/auth/login`, etc.) |
+| [`package.json`](package.json) | Manifesto do projeto; **deve ser JSON UTF-8 sem BOM** |
+| Preview | Branch **`develop`** |
+| Produção | Branch **`main`** após merge aprovado pelo PO |
+| Env Olist / Redis / KV | Só runtime OAuth — **não** necessárias para build/deploy do catálogo estático |
+
+### Encoding (causa histórica de deploy vermelho)
+
+- `vercel.json`, `package.json` e qualquer `.js`/`.html` commitado: **UTF-8 sem BOM** (`EF BB BF` proibido).
+- Antes de push: validar `JSON.parse` em `package.json` e `vercel.json`; scan de BOM nos arquivos novos/alterados.
+
+### Auditoria Cursor (pré-push / pré-merge)
+
+- [ ] Diff limitado ao escopo da sprint em `PLAN.md` / `SDD.md`
+- [ ] Sem BOM nos arquivos tocados
+- [ ] `package.json` / `vercel.json` parseiam se alterados
+- [ ] Números, URLs e modelos só os documentados
+- [ ] Site institucional / OAuth / footer intocados se fora do escopo
 
 ## Regras para Antigravity
 
 ### Obrigatório
 
-- Manter **Política de Privacidade** e **Termos de Uso** em **arquivos separados** — nunca unificar.
-- Usar **somente** dados confirmados pelo PO em `PLAN.md` (CNPJ, razão social, tipos de dados, finalidades, **canais de contato**, **URLs de redes sociais**).
-- Em `termos-de-uso.html`, a seção de **dúvidas/contato** deve usar o telefone SAC/pós-vendas confirmado em `PLAN.md`: **(21) 99306-1329** (link opcional: `https://wa.me/5521993061329`).
-- Em `politica-de-privacidade.html`, as **seções 8 e 10** devem listar **WhatsApp comercial (21) 97320-8542** e **WhatsApp SAC/pós-vendas (21) 99306-1329**, explicando que o SAC é o canal para dúvidas, solicitações e exercício de direitos do titular relacionados à **LGPD**.
-- Na seção **Assistência Técnica** (`#assistencia-tecnica` em `index.html`), os CTAs devem usar o **WhatsApp SAC/pós-vendas (21) 99306-1329** (`https://wa.me/5521993061329`), conforme `PLAN.md`.
-- Números de telefone, papéis de cada canal e **links de redes sociais** vêm **exclusivamente** de `PLAN.md` — sem inventar contatos ou URLs.
-- Nos cards de catálogo **X16**, **X18** e **Raptor**, a linha de especificação incompleta deve ser **“Consulte”** (não “Especificações em breve...”).
-- Preferir CSS em stylesheet externo compartilhado; não reinventar tokens de marca fora do documentado.
-- Não alterar o WhatsApp comercial **(21) 97320-8542** no header, catálogo, CTA banner e float sem instrução do PO.
-- Declarar ausência de cookies e Google Analytics nesta versão do site.
-- Parar e solicitar orientação ao PO em caso de dúvida.
+- Usar **somente** dados de `PLAN.md` / `SDD.md`.
+- Manter **Política** e **Termos** em arquivos separados.
+- Canais WhatsApp e redes: exclusivamente `PLAN.md`.
+- Catálogo: seguir **`SDD.md`** (8 modelos, modal, CTA WA agressivo, sem descrição longa no modal).
+- Preferir CSS externo; tokens de marca alinhados a `styles.css`.
+- Declarar ausência de cookies e GA nesta versão do site (páginas legais).
+- Parar e perguntar ao PO em caso de dúvida.
 
-### Footer (`index.html`) — layout obrigatório
+### Sprint Catálogo (atual)
 
-Seguir a spec de 3 zonas em `PLAN.md`:
+- Página `catalogos/index.html` + `catalogo-data.js` + CSS conforme `SDD.md`.
+- Modelos: X11, X13, X16, DOT, M16, Triciclo BIG, Raptor, **AG MAX** — **sem** X17, X18.
+- Modal: fotos + cores + CTA WhatsApp comercial agressivo (`waCtaLabel` / `waText`).
+- `index.html`: apenas menu Catálogo + CTA da seção → `/catalogos/`.
+- WhatsApp do catálogo: **(21) 97320-8542**.
 
-1. **`footer__grid` → Contato:** apenas **WhatsApp comercial**, **WhatsApp SAC/pós-vendas** e **e-mail**. **Não** exibir `@instagram` / handle Instagram nesta coluna (meios principais de contato = WhatsApp e e-mail; SAC é o terceiro canal de contato).
-2. **`footer__utility`** (corpo do footer): **4 ícones circulares** no mesmo padrão visual (Instagram, Facebook, YouTube, TikTok) com URLs de `PLAN.md` + links **Política de Privacidade** · **Termos de Uso** na mesma faixa tipográfica. Instagram aparece **somente** como ícone aqui.
-3. **`footer__bottom`:** copyright + **razão social** + **CNPJ** (valores de `PLAN.md`) + disclaimer **`Desenvolvido por Vinícius Tavares de Miranda`** (link `https://zweicoorp.com.br`). Remover “Projeto de Demonstração / Portfólio”.
+### Footer (`index.html`) — layout (já entregue; não redesenhar nesta sprint)
+
+1. Contato: comercial + SAC + e-mail (sem @instagram).
+2. `footer__utility`: 4 ícones + Política · Termos.
+3. `footer__bottom`: © + razão + CNPJ + Desenvolvido por…
 
 ### Proibido
 
-- Inventar CNPJ, razão social, encarregado LGPD, parceiros, cookies, ferramentas de analytics, **números de telefone** ou **URLs de redes** não confirmados em `PLAN.md`.
-- Alterar copy comercial, catálogo ou funcionalidades fora do escopo da sprint atual documentada em `PLAN.md`.
-- Cursor/PM implementar HTML/CSS no lugar do Antigravity (exceto se o PO ordenar explicitamente o contrário).
-- Colocar Instagram como linha de contato na coluna Contato.
-- Alterar o texto do disclaimer para outro que não o confirmado em `PLAN.md` sem ordem do PO.
+- Inventar CNPJ, contatos, URLs, cores oficiais ou fotos não confirmadas pelo PO.
+- Alterar OAuth, footer, assistência, legais nesta sprint de catálogo.
+- Cursor implementar HTML/CSS no lugar do Antigravity (exceto ordem explícita do PO).
+- Commitar arquivos com BOM UTF-8.
 
-### Arquivos permitidos — entrega legal (histórico)
+### Arquivos permitidos — sprint Catálogo
 
-- `politica-de-privacidade.html`
-- `termos-de-uso.html`
-- Trecho de links legais no footer de `index.html`
-- `README.md` (seção Documentos legais)
-- `PLAN.md` (atualização de pendências, se necessário)
-
-### Arquivos permitidos — sprint de melhorias (conforme `PLAN.md`)
-
-- `index.html` (specs Consulte, assistência → SAC, footer grid/utility/bottom, link CSS)
-- Arquivo(s) `.css` externo(s) (ex.: `styles.css` ou `assets/css/styles.css`)
-- `politica-de-privacidade.html` / `termos-de-uso.html` (somente se CSS compartilhado)
-- `README.md` (seção redes sociais / footer com URLs oficiais)
+- `catalogos/index.html`
+- `catalogos/catalogo-data.js`
+- `catalogos/catalogo.css` (ou extensão mínima de `styles.css`)
+- `index.html` (somente nav + seção `#catalogo` CTA)
+- `assets/` (fotos de catálogo quando o PO entregar)
+- `README.md` (mencionar `/catalogos/`)
+- Documentos-verdade: só Cursor (`PLAN.md`, `SDD.md`, `AGENTS.md`)
 
 ## Referências legais (Brasil)
 

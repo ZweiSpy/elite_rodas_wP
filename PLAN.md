@@ -5,8 +5,8 @@
 | Papel | Responsável | Escopo |
 |-------|-------------|--------|
 | PO | Vinícius Tavares de Miranda | Dados, links, aprovação |
-| PM / Arquiteto | Cursor | **Somente** `PLAN.md` e `AGENTS.md` |
-| Desenvolvedor | Antigravity | HTML, CSS, `README.md` e assets conforme este plano |
+| PM / Arquiteto | Cursor | Documentos-verdade: `PLAN.md`, `SDD.md`, `AGENTS.md` + auditorias |
+| Desenvolvedor | Antigravity | HTML, CSS, JS, `README.md` e assets conforme `PLAN.md` / `SDD.md` |
 
 ---
 
@@ -187,7 +187,74 @@ Ordem sugerida: CSS → specs → assistência SAC → footer (contato + utility
 
 ---
 
+## Sprint: Catálogo dedicado (documentação 09/09/2026 — implementação Antigravity)
+
+Spec técnica completa: [`SDD.md`](SDD.md).
+
+### Objetivo
+
+Criar página pública **`/catalogos/`** com grade de cards rápida, modal por modelo (fotos + cores + CTA WhatsApp agressivo), e no `index.html` substituir a grade embutida por CTA + link no menu.
+
+### Decisões do PO
+
+| Item | Decisão |
+|------|---------|
+| URL pública | `/catalogos/` |
+| Path no repo | `catalogos/index.html` |
+| Index | Remover grade `#catalogo`; **CTA “Ver catálogo”** + item **Catálogo** no menu → `/catalogos/` |
+| Modal | Fotos + seletor de cores (cor troca as fotos) + **CTA agressivo WhatsApp** — **sem** descrição longa do modelo |
+| WhatsApp do modal / cards | Comercial `(21) 97320-8542` · `https://wa.me/5521973208542` |
+| Assets atuais | Fotos em `assets/*.jpeg` como **referência** até o PO enviar cores/fotos definitivas |
+| Modelos | Remover **X17** e **X18**; **X13** único (sem Pro / Pro Max); incluir **AG MAX** como card próprio |
+| Fora de escopo | Contatos, assistência, OAuth (`api/`, `auth/`), footer, legais, demais seções do site |
+
+### Catálogo alvo (8 modelos)
+
+| id | Nome | Foto de referência (temporária) |
+|----|------|----------------------------------|
+| x11 | Scooter X11 | `assets/x11.jpeg` |
+| x13 | Scooter X13 | `assets/x13.jpeg` |
+| x16 | Scooter X16 | `assets/x16.jpeg` |
+| dot | Scooter DOT | `assets/dot.jpeg` |
+| m16 | Scooter M16 | `assets/m16.jpeg` |
+| triciclo-big | Triciclo BIG | `assets/triciclo.jpeg` |
+| raptor | Scooter Raptor | `assets/raptor.jpeg` |
+| ag-max | AG MAX | Temporário: `assets/placeholder-moto.png` até o PO entregar a foto oficial |
+
+**Removidos do catálogo:** X17, X18 (e qualquer menção a X13 Pro / Pro Max).
+
+### Pendência para Antigravity (catálogo)
+
+Ordem sugerida: `catalogo-data.js` → `catalogos/index.html` + CSS → modal JS → ajustes mínimos no `index.html` (menu + CTA) → README (link `/catalogos/`).
+
+- [x] Criar `catalogos/index.html` (página dedicada, carregamento rápido)
+- [x] Criar `catalogos/catalogo-data.js` com os **8** modelos conforme `SDD.md` (cor `Referência` + foto atual; AG MAX com placeholder)
+- [x] Criar CSS do catálogo (`catalogos/catalogo.css` ou extensão de `styles.css`) — **UTF-8 sem BOM**
+- [x] Grade de cards; clique abre modal (fotos + cores + CTA WA agressivo, sem texto descritivo longo)
+- [x] Seletor de cores troca o conjunto `photos` da cor ativa
+- [x] Em `index.html`: nav **Catálogo** → `/catalogos/`; seção `#catalogo` vira CTA “Ver catálogo”; link “Conhecer os modelos” → `/catalogos/`
+- [x] Remover cards X17 e X18 do fluxo (não recriar na nova página)
+- [x] Não alterar OAuth, footer, assistência, legais, contatos
+- [x] Atualizar `README.md` com a URL `/catalogos/` (seção estrutura / catálogo)
+
+### Auditoria Cursor (09/09/2026)
+
+**Veredito: APROVADO** para teste do PO (preview `develop` após commit/push).
+
+- Entrega conforme `SDD.md` / este `PLAN.md` nos critérios bloqueantes (8 modelos, modal, WA comercial, index CTA, sem BOM, OAuth intocado).
+- **Ressalvas menores (não bloqueiam):** specs curtas (“Destaques”) no modal; AG MAX ainda com `placeholder-moto.png`; estilos inline no CTA do `index`.
+- **Não mergear `main`** até o PO validar visualmente o preview.
+
+### Pendências do PO (catálogo — não bloqueiam a estrutura)
+
+- Cores oficiais e fotos por cor por modelo → atualizar `catalogo-data.js` + `assets/catalogo/{modelo}/{cor}/`
+- Foto oficial do **AG MAX** (substituir `placeholder-moto.png`)
+- Refino do copy dos CTAs WhatsApp (`waCtaLabel` / `waText`), se desejar
+- Validação visual no preview `develop` e autorização de commit/push / merge `main`
+---
+
 ## Pendências opcionais do PO (não bloqueiam publicação)
 
 - Encarregado/DPO com nome dedicado (canal atual: adm.eliterodas@gmail.com)
 - Prazo específico de retenção de dados (texto usa linguagem genérica conforme finalidades e obrigações legais)
+- Assets definitivos do catálogo (cores / fotos / AG MAX)
