@@ -245,16 +245,64 @@ Ordem sugerida: `catalogo-data.js` → `catalogos/index.html` + CSS → modal JS
 - **Ressalvas menores (não bloqueiam):** specs curtas (“Destaques”) no modal; AG MAX ainda com `placeholder-moto.png`; estilos inline no CTA do `index`.
 - **Não mergear `main`** até o PO validar visualmente o preview.
 
-### Pendências do PO (catálogo — não bloqueiam a estrutura)
+### Pendências do PO (catálogo — estrutura base)
 
-- Cores oficiais e fotos por cor por modelo → atualizar `catalogo-data.js` + `assets/catalogo/{modelo}/{cor}/`
-- Foto oficial do **AG MAX** (substituir `placeholder-moto.png`)
+- Validação visual no preview `develop` e autorização de merge `main` (estrutura base)
 - Refino do copy dos CTAs WhatsApp (`waCtaLabel` / `waText`), se desejar
-- Validação visual no preview `develop` e autorização de commit/push / merge `main`
+
+---
+
+## Sprint: Cores e ângulos do catálogo (documentação 10/09/2026 — implementação Antigravity)
+
+Spec: seção **Cores e ângulos** em [`SDD.md`](SDD.md).
+
+### Decisões do PO
+
+| Item | Decisão |
+|------|---------|
+| Fotos `modelo`, `modelo-1`, `modelo-2`… | **Mesma cor**, ângulos diferentes; numeração só diferencia ângulo |
+| Padrão de nome futuro | `{modelo}[-{n}]-{cor}.jpeg` — **cor por último** (ex.: `x13-preto.jpeg`, `x13-1-preto.jpeg`) |
+| Cores oficiais | Tabela abaixo (todas no seletor do modal) |
+| Cores sem arquivo ainda | Swatch visível; galeria com **fallback** da cor que já tem fotos + nota “Fotos desta cor em breve” |
+| `WhatsApp Image…` em `assets/` | **Ignorar** — não usar no catálogo |
+| AG MAX | Usar `ag-max.jpeg`, `ag-max-1.jpeg`, `ag-max-2.jpeg` (remover placeholder do card) |
+
+### Cores oficiais + mapeamento provisório de assets
+
+Até o rename `*-{cor}`, **todas as fotos atuais do modelo** vão para a **primeira cor** da lista; demais cores com `photos: []`.
+
+| Modelo | Cores (ordem) | Arquivos atuais → 1ª cor (provisório) |
+|--------|---------------|----------------------------------------|
+| M16 | Cinza, Verde claro | `M16.jpeg`, `M16-1.jpeg`, `M16-2.jpeg` → Cinza |
+| X13 | Preto, Branco, Azul, Vermelho, Carbono | `x13.jpeg` … `x13-3.jpeg` → Preto |
+| X11 | Preto, Branco, Azul, Vermelho | `x11.jpeg` → Preto |
+| DOT | Preto, Branco, Cinza | `dot.jpeg`, `dot-1.jpeg`, `dot-2.jpeg` → Preto |
+| X16 | Preto, Branco, Azul, Vermelho | `x16.jpeg` → Preto |
+| AG MAX | Cinza | `ag-max.jpeg`, `ag-max-1.jpeg`, `ag-max-2.jpeg` → Cinza |
+| Raptor | Vermelho, Preto, Cinza | `raptor.jpeg` → Vermelho |
+| Triciclo BIG | Bege, Preto | `triciclo.jpeg` → Bege |
+
+**Case Vercel (Linux):** paths exatos — `M16.jpeg` (não `m16.jpeg`).
+
+### Pendência para Antigravity (cores / ângulos)
+
+- [ ] Reescrever `catalogos/catalogo-data.js` com cores oficiais, swatches e `photos` conforme `SDD.md` (UTF-8 **sem BOM**)
+- [ ] Corrigir path M16 → `../assets/M16.jpeg` (e variantes com `M` maiúsculo)
+- [ ] AG MAX: `cardImage` + galeria Cinza com `ag-max*.jpeg` (sem `placeholder-moto.png`)
+- [ ] Modal: se `photos.length === 0`, fallback da última cor com fotos + texto “Fotos desta cor em breve”
+- [ ] Não incluir arquivos `WhatsApp Image…`
+- [ ] Não alterar OAuth, footer, assistência fora do escopo
+- [ ] Push `develop` para o PO validar preview
+
+### Pendências do PO (após Antigravity — cores)
+
+- Renomear assets para `*-{cor}` e completar fotos faltantes
+- Validar preview e autorizar merge `main`
+
 ---
 
 ## Pendências opcionais do PO (não bloqueiam publicação)
 
 - Encarregado/DPO com nome dedicado (canal atual: adm.eliterodas@gmail.com)
 - Prazo específico de retenção de dados (texto usa linguagem genérica conforme finalidades e obrigações legais)
-- Assets definitivos do catálogo (cores / fotos / AG MAX)
+- Assets definitivos do catálogo (rename `*-{cor}` + cores faltantes)

@@ -65,13 +65,15 @@
 - Declarar ausência de cookies e GA nesta versão do site (páginas legais).
 - Parar e perguntar ao PO em caso de dúvida.
 
-### Sprint Catálogo (atual)
+### Sprint Catálogo — cores e ângulos (atual)
 
-- Página `catalogos/index.html` + `catalogo-data.js` + CSS conforme `SDD.md`.
-- Modelos: X11, X13, X16, DOT, M16, Triciclo BIG, Raptor, **AG MAX** — **sem** X17, X18.
-- Modal: fotos + cores + CTA WhatsApp comercial agressivo (`waCtaLabel` / `waText`).
-- `index.html`: apenas menu Catálogo + CTA da seção → `/catalogos/`.
-- WhatsApp do catálogo: **(21) 97320-8542**.
+- Seguir **`SDD.md`** §§4–7 e checklist §11; tabela em **`PLAN.md`**.
+- Convenção futura: `{modelo}[-{n}]-{cor}.jpeg` (cor por último). Hoje: ângulos `modelo`, `modelo-1`… = **mesma cor**.
+- `catalogo-data.js`: cores oficiais do PO; `photos` = ângulos; cores sem arquivo → `photos: []`.
+- Modal: cor sem fotos → **fallback** da cor com fotos + “Fotos desta cor em breve”.
+- AG MAX: `ag-max*.jpeg` (sem placeholder). Paths case-sensitive (`M16.jpeg`).
+- Ignorar `WhatsApp Image…`. WhatsApp catálogo: **(21) 97320-8542**.
+- Não alterar index/footer/OAuth nesta sprint além do necessário no modal/`catalogo-data.js`.
 
 ### Footer (`index.html`) — layout (já entregue; não redesenhar nesta sprint)
 
@@ -85,15 +87,12 @@
 - Alterar OAuth, footer, assistência, legais nesta sprint de catálogo.
 - Cursor implementar HTML/CSS no lugar do Antigravity (exceto ordem explícita do PO).
 - Commitar arquivos com BOM UTF-8.
+- Incluir arquivos `WhatsApp Image…` no catálogo.
 
-### Arquivos permitidos — sprint Catálogo
+### Arquivos permitidos — sprint Cores / ângulos
 
-- `catalogos/index.html`
-- `catalogos/catalogo-data.js`
-- `catalogos/catalogo.css` (ou extensão mínima de `styles.css`)
-- `index.html` (somente nav + seção `#catalogo` CTA)
-- `assets/` (fotos de catálogo quando o PO entregar)
-- `README.md` (mencionar `/catalogos/`)
+- `catalogos/catalogo-data.js` (reescrever cores + photos)
+- `catalogos/index.html` / `catalogos/catalogo.css` (somente fallback “em breve” no modal)
 - Documentos-verdade: só Cursor (`PLAN.md`, `SDD.md`, `AGENTS.md`)
 
 ## Referências legais (Brasil)

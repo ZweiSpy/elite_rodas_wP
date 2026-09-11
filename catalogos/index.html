@@ -110,6 +110,10 @@
         <div class="modal-gallery">
           <div class="modal-gallery__viewport">
             <img id="modal-img" src="" alt="" class="modal-gallery__img">
+            <div id="modal-photo-notice" class="modal-gallery__notice" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              <span>Fotos desta cor em breve</span>
+            </div>
           </div>
           <div id="modal-thumbs" class="modal-gallery__thumbs" aria-label="Miniaturas da galeria"></div>
         </div>
@@ -257,6 +261,7 @@
       const modalTitle = document.getElementById('modal-title');
       const modalImg = document.getElementById('modal-img');
       const modalThumbs = document.getElementById('modal-thumbs');
+      const modalPhotoNotice = document.getElementById('modal-photo-notice');
       const modalSpecs = document.getElementById('modal-specs');
       const modalColors = document.getElementById('modal-color-swatches');
       const modalColorName = document.getElementById('modal-color-name');
@@ -266,6 +271,7 @@
       let currentModel = null;
       let currentColor = null;
       let currentPhotoIndex = 0;
+      let currentFallbackPhotos = [];
       let lastFocusedElement = null;
 
       function buildWhatsAppUrl(text) {
@@ -337,7 +343,7 @@
       function setModalPhoto(photoUrl, index) {
         currentPhotoIndex = index;
         modalImg.src = photoUrl;
-        modalImg.alt = currentModel.name + ' - ' + currentColor.label;
+        modalImg.alt = currentModel.name + ' - ' + (currentColor ? currentColor.label : '');
 
         // Atualizar status visual dos thumbnails
         const thumbButtons = modalThumbs.querySelectorAll('.modal-gallery__thumb-btn');
@@ -360,10 +366,23 @@
           btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
         });
 
-        // Atualizar galeria para a nova cor
-        const photos = colorObj.photos && colorObj.photos.length ? colorObj.photos : [currentModel.cardImage];
-        modalThumbs.innerHTML = '';
+        // Verificar se esta cor possui fotos próprias
+        const hasPhotos = Array.isArray(colorObj.photos) && colorObj.photos.length > 0;
 
+        if (hasPhotos) {
+          currentFallbackPhotos = colorObj.photos;
+          if (modalPhotoNotice) modalPhotoNotice.hidden = true;
+        } else {
+          if (modalPhotoNotice) modalPhotoNotice.hidden = false;
+        }
+
+        // Usar fotos da cor ou o fallback da última cor com fotos disponíveis
+        const photos = hasPhotos
+          ? colorObj.photos
+          : (currentFallbackPhotos.length ? currentFallbackPhotos : [currentModel.cardImage]);
+
+        // Atualizar thumbnails da galeria
+        modalThumbs.innerHTML = '';
         if (photos.length > 1) {
           modalThumbs.hidden = false;
           photos.forEach((photo, idx) => {
@@ -409,6 +428,12 @@
           { id: 'ref', label: 'Referência', swatch: '#666666', photos: [model.cardImage] }
         ];
 
+        // Inicializar fallback com a primeira cor que tiver fotos cadastradas ou com o cardImage
+        const firstWithPhotos = colors.find(c => Array.isArray(c.photos) && c.photos.length > 0);
+        currentFallbackPhotos = (firstWithPhotos && firstWithPhotos.photos.length > 0)
+          ? firstWithPhotos.photos
+          : [model.cardImage];
+
         colors.forEach((color, idx) => {
           const swatchBtn = document.createElement('button');
           swatchBtn.type = 'button';
@@ -439,6 +464,7 @@
 
         setTimeout(() => {
           modal.hidden = true;
+          if (modalPhotoNotice) modalPhotoNotice.hidden = true;
           if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
             lastFocusedElement.focus();
           }
