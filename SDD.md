@@ -3,7 +3,7 @@
 Documento técnico para o **Antigravity**. Dados de negócio e canais: sempre [`PLAN.md`](PLAN.md). Regras de agentes: [`AGENTS.md`](AGENTS.md).
 
 **Sprint base:** Catálogo dedicado (`/catalogos/`) — documentação 09/09/2026.  
-**Sprint atual:** Cores e ângulos — documentação 10/09/2026.
+**Sprint atual:** Cores e ângulos — documentação 10/09/2026; **assets por cor** atualizados pelo PO em 11/09/2026.
 
 ---
 
@@ -13,9 +13,9 @@ Página pública de catálogo com carregamento rápido, grade de cards e modal p
 
 ## 2. Fora de escopo
 
-Não alterar: footer, assistência técnica, OAuth (`api/`, `auth/`, `vercel.json`), páginas legais, WhatsApp flutuante (exceto se o plano pedir), copy comercial fora do catálogo.
+Não alterar: footer, assistência técnica, OAuth (`api/`, `auth/`, `vercel.json`), páginas legais, WhatsApp flutuante (exceto se o plano pedir), copy comercial fora do catálogo, `index.html` raiz.
 
-**Fora desta sprint de cores:** renomear arquivos em `assets/` (PO faz); usar arquivos `WhatsApp Image…`; mudar layout geral do site.
+**Fora desta entrega:** inventar `x13-3-carbono.jpeg`; inventar `*-{cor}` para X11/X16/Raptor/Triciclo; usar `WhatsApp Image…` ou `placeholder-moto.png`.
 
 ## 3. Arquitetura de pastas
 
@@ -23,54 +23,64 @@ Não alterar: footer, assistência técnica, OAuth (`api/`, `auth/`, `vercel.jso
 catalogos/
   index.html           # página /catalogos/
   catalogo-data.js     # fonte de verdade dos 8 modelos + cores
-  catalogo.css         # estilos da página + modal (preferencial)
+  catalogo.css         # estilos da página + modal
 assets/
-  *.jpeg               # fotos atuais (case-sensitive na Vercel)
-styles.css             # tokens globais (reutilizar via link)
-index.html             # só menu + CTA → /catalogos/ (mínimo)
+  {modelo}[-{n}]-{cor}.jpeg   # preferencial (case-sensitive na Vercel)
+  x11.jpeg, x16.jpeg, raptor.jpeg, triciclo.jpeg  # provisórios
+styles.css
+index.html             # só menu + CTA → /catalogos/
 ```
 
-**URL pública (Vercel estático):** `catalogos/index.html` → `https://<domínio>/catalogos/`
+**URL pública:** `catalogos/index.html` → `https://<domínio>/catalogos/`
 
-**Ignorar em `assets/`:** qualquer arquivo cujo nome comece com `WhatsApp Image` — **não** entram no catálogo.
+**Ignorar em `assets/`:** nomes que começam com `WhatsApp Image`; `placeholder-moto.png` no catálogo.
 
 ## 4. Convenção de nomes de arquivos
 
 | Conceito | Regra |
 |----------|--------|
-| `x13.jpeg`, `x13-1.jpeg`, `x13-2.jpeg`… | **Mesma cor**, ângulos diferentes (frente, lado, etc.) |
-| Numeração `-1`, `-2`… | Só diferencia ângulo; **ordem de exibição** = ordem no array `photos` |
-| Padrão futuro | `{modelo}[-{n}]-{cor}.jpeg` — **cor sempre por último** |
-| Exemplos futuros | `x13-preto.jpeg`, `x13-1-preto.jpeg`, `m16-verde-claro.jpeg`, `m16-1-cinza.jpeg` |
+| Padrão | `{modelo}[-{n}]-{cor}.jpeg` — **cor sempre por último** |
+| Exemplos | `x13-preto-brilhoso.jpeg`, `x13-1-preto-fosco.jpeg`, `M16-cinza.jpeg`, `M16-1-verde-claro.jpeg`, `dot-preto.jpeg`, `ag-max-cinza.jpeg` |
+| Numeração `-1`, `-2`… | Só ângulo; ordem de exibição = ordem no array `photos` |
+| Case Vercel | `M16-…` com **M maiúsculo** (nunca `m16-…`) |
 
-**Case Vercel (Linux):** paths exatos — `M16.jpeg` (maiúsculo), não `m16.jpeg`.
+Modelos **ainda provisórios** (sem sufixo de cor): colocar o arquivo único na **primeira cor** da lista; demais cores com `photos: []`.
 
-Até o PO renomear para `*-{cor}`, usar os arquivos atuais na **primeira cor** da lista do modelo (tabela abaixo). Demais cores: `photos: []`.
+## 5. Modelos (8) + cores oficiais + assets
 
-## 5. Modelos (8) + cores oficiais
+### 5.1 Com arquivos `*-{cor}` (obrigatório nesta entrega)
 
-| id | name | Cores (ordem no seletor) | Arquivos atuais → 1ª cor (provisório) |
-|----|------|--------------------------|----------------------------------------|
-| `m16` | Scooter M16 | Cinza, Verde claro | `M16.jpeg`, `M16-1.jpeg`, `M16-2.jpeg` → **Cinza** |
-| `x13` | Scooter X13 | Preto, Branco, Azul, Vermelho, Carbono | `x13.jpeg` … `x13-3.jpeg` → **Preto** |
-| `x11` | Scooter X11 | Preto, Branco, Azul, Vermelho | `x11.jpeg` → **Preto** |
-| `dot` | Scooter DOT | Preto, Branco, Cinza | `dot.jpeg`, `dot-1.jpeg`, `dot-2.jpeg` → **Preto** |
-| `x16` | Scooter X16 | Preto, Branco, Azul, Vermelho | `x16.jpeg` → **Preto** |
-| `ag-max` | AG MAX | Cinza | `ag-max.jpeg`, `ag-max-1.jpeg`, `ag-max-2.jpeg` → **Cinza** |
-| `raptor` | Scooter Raptor | Vermelho, Preto, Cinza | `raptor.jpeg` → **Vermelho** |
-| `triciclo-big` | Triciclo BIG | Bege, Preto | `triciclo.jpeg` → **Bege** |
+| id | name | Cores (ordem) | `photos` por cor (prefixo `../assets/`) |
+|----|------|---------------|----------------------------------------|
+| `m16` | Scooter M16 | Cinza, Verde claro | Cinza: `M16-cinza.jpeg`, `M16-1-cinza.jpeg`, `M16-2-cinza.jpeg` · Verde claro: `M16-verde-claro.jpeg`, `M16-1-verde-claro.jpeg`, `M16-2-verde-claro.jpeg` |
+| `x13` | Scooter X13 | Preto brilhoso, Preto fosco, Branco, Azul, Vermelho, Carbono | Preto brilhoso: `x13-preto-brilhoso.jpeg` … `x13-3-preto-brilhoso.jpeg` · Preto fosco: `x13-preto-fosco.jpeg` … `x13-3-preto-fosco.jpeg` · Branco: `x13-branco.jpeg` … `x13-3-branco.jpeg` · Azul: `x13-azul.jpeg` … `x13-3-azul.jpeg` · Vermelho: `x13-vermelho.jpeg` … `x13-3-vermelho.jpeg` · Carbono: `x13-carbono.jpeg`, `x13-1-carbono.jpeg`, `x13-2-carbono.jpeg` (**sem** `-3` nesta sprint; 4º ângulo = PO futuro) |
+| `dot` | Scooter DOT | Preto, Branco, Cinza | Preto: `dot-preto.jpeg`, `dot-1-preto.jpeg`, `dot-2-preto.jpeg` · Branco: `dot-branco.jpeg`, `dot-1-branco.jpeg`, `dot-2-branco.jpeg` · Cinza: `dot-cinza.jpeg`, `dot-1-cinza.jpeg`, `dot-2-cinza.jpeg` |
+| `ag-max` | AG MAX | Cinza | `ag-max-cinza.jpeg`, `ag-max-1-cinza.jpeg`, `ag-max-2-cinza.jpeg` |
+
+**X13:** não usar id/label `preto` único — apenas `preto-brilhoso` e `preto-fosco`.
+
+### 5.2 Ainda provisórios
+
+| id | name | Cores (ordem) | Arquivo → 1ª cor |
+|----|------|---------------|------------------|
+| `x11` | Scooter X11 | Preto, Branco, Azul, Vermelho | `x11.jpeg` → Preto |
+| `x16` | Scooter X16 | Preto, Branco, Azul, Vermelho | `x16.jpeg` → Preto |
+| `raptor` | Scooter Raptor | Vermelho, Preto, Cinza | `raptor.jpeg` → Vermelho |
+| `triciclo-big` | Triciclo BIG | Bege, Preto | `triciclo.jpeg` → Bege |
 
 **Não incluir:** X17, X18, X13 Pro, X13 Pro Max.
 
-**cardImage:** primeira foto disponível da cor principal atual (1ª cor com `photos.length > 0`).
+**cardImage:** primeira foto da primeira cor com `photos.length > 0`.
 
-Specs curtas no card: reaproveitar linhas atuais. Onde estava “Consulte” (X16, Raptor, AG MAX), manter **Consulte**.
+Specs no card: reaproveitar as atuais. X16, Raptor, AG MAX: manter **Consulte** onde já estava.
 
 ### Swatches hex (UI)
 
-| Cor | id sugerido | swatch |
-|-----|-------------|--------|
+| Cor | id | swatch |
+|-----|-----|--------|
 | Preto | `preto` | `#111111` |
+| Preto brilhoso | `preto-brilhoso` | `#111111` |
+| Preto fosco | `preto-fosco` | `#3d3d3d` |
 | Branco | `branco` | `#f2f2f2` |
 | Azul | `azul` | `#1e4fd6` |
 | Vermelho | `vermelho` | `#e60000` |
@@ -81,45 +91,95 @@ Specs curtas no card: reaproveitar linhas atuais. Onde estava “Consulte” (X1
 
 ## 6. Contrato de dados — `catalogo-data.js`
 
-Exportar array `CATALOGO_MODELOS` (ou `window.CATALOGO_MODELOS`).
+Exportar `CATALOGO_MODELOS` (ou `window.CATALOGO_MODELOS`).
+
+### Exemplo X13 (trecho)
 
 ```js
 {
   id: "x13",
   name: "Scooter X13",
-  cardImage: "../assets/x13.jpeg",
-  specs: ["Velocidade até 60-70 km/h", "Freio a Disco", "Painel Digital"], // opcional no card
+  cardImage: "../assets/x13-preto-brilhoso.jpeg",
+  specs: ["Velocidade até 60-70 km/h", "Freio a Disco", "Painel Digital"],
   colors: [
     {
-      id: "preto",
-      label: "Preto",
+      id: "preto-brilhoso",
+      label: "Preto brilhoso",
       swatch: "#111111",
       photos: [
-        "../assets/x13.jpeg",
-        "../assets/x13-1.jpeg",
-        "../assets/x13-2.jpeg",
-        "../assets/x13-3.jpeg"
+        "../assets/x13-preto-brilhoso.jpeg",
+        "../assets/x13-1-preto-brilhoso.jpeg",
+        "../assets/x13-2-preto-brilhoso.jpeg",
+        "../assets/x13-3-preto-brilhoso.jpeg"
       ]
     },
-    { id: "branco", label: "Branco", swatch: "#f2f2f2", photos: [] },
-    { id: "azul", label: "Azul", swatch: "#1e4fd6", photos: [] },
-    { id: "vermelho", label: "Vermelho", swatch: "#e60000", photos: [] },
-    { id: "carbono", label: "Carbono", swatch: "#2a2a2a", photos: [] }
+    {
+      id: "preto-fosco",
+      label: "Preto fosco",
+      swatch: "#3d3d3d",
+      photos: [
+        "../assets/x13-preto-fosco.jpeg",
+        "../assets/x13-1-preto-fosco.jpeg",
+        "../assets/x13-2-preto-fosco.jpeg",
+        "../assets/x13-3-preto-fosco.jpeg"
+      ]
+    },
+    {
+      id: "branco",
+      label: "Branco",
+      swatch: "#f2f2f2",
+      photos: [
+        "../assets/x13-branco.jpeg",
+        "../assets/x13-1-branco.jpeg",
+        "../assets/x13-2-branco.jpeg",
+        "../assets/x13-3-branco.jpeg"
+      ]
+    },
+    {
+      id: "azul",
+      label: "Azul",
+      swatch: "#1e4fd6",
+      photos: [
+        "../assets/x13-azul.jpeg",
+        "../assets/x13-1-azul.jpeg",
+        "../assets/x13-2-azul.jpeg",
+        "../assets/x13-3-azul.jpeg"
+      ]
+    },
+    {
+      id: "vermelho",
+      label: "Vermelho",
+      swatch: "#e60000",
+      photos: [
+        "../assets/x13-vermelho.jpeg",
+        "../assets/x13-1-vermelho.jpeg",
+        "../assets/x13-2-vermelho.jpeg",
+        "../assets/x13-3-vermelho.jpeg"
+      ]
+    },
+    {
+      id: "carbono",
+      label: "Carbono",
+      swatch: "#2a2a2a",
+      photos: [
+        "../assets/x13-carbono.jpeg",
+        "../assets/x13-1-carbono.jpeg",
+        "../assets/x13-2-carbono.jpeg"
+      ]
+    }
   ],
   waCtaLabel: "Quero informações agora",
   waText: "Olá! Quero informações e valores do modelo Scooter X13."
 }
 ```
 
-Quando o PO renomear/adicionar: `photos: ["../assets/x13-preto.jpeg", "../assets/x13-1-preto.jpeg", …]`.
-
-### Exemplo AG MAX (sem placeholder)
+### Exemplo AG MAX
 
 ```js
 {
   id: "ag-max",
   name: "AG MAX",
-  cardImage: "../assets/ag-max.jpeg",
+  cardImage: "../assets/ag-max-cinza.jpeg",
   specs: ["Consulte"],
   colors: [
     {
@@ -127,9 +187,9 @@ Quando o PO renomear/adicionar: `photos: ["../assets/x13-preto.jpeg", "../assets
       label: "Cinza",
       swatch: "#8a8a8a",
       photos: [
-        "../assets/ag-max.jpeg",
-        "../assets/ag-max-1.jpeg",
-        "../assets/ag-max-2.jpeg"
+        "../assets/ag-max-cinza.jpeg",
+        "../assets/ag-max-1-cinza.jpeg",
+        "../assets/ag-max-2-cinza.jpeg"
       ]
     }
   ],
@@ -138,81 +198,87 @@ Quando o PO renomear/adicionar: `photos: ["../assets/x13-preto.jpeg", "../assets
 }
 ```
 
+### Exemplo provisório (X11)
+
+```js
+{
+  id: "x11",
+  name: "Scooter X11",
+  cardImage: "../assets/x11.jpeg",
+  specs: ["Velocidade até 60 km/h", "Autonomia 30-40km", "Banco para 2 pessoas"],
+  colors: [
+    { id: "preto", label: "Preto", swatch: "#111111", photos: ["../assets/x11.jpeg"] },
+    { id: "branco", label: "Branco", swatch: "#f2f2f2", photos: [] },
+    { id: "azul", label: "Azul", swatch: "#1e4fd6", photos: [] },
+    { id: "vermelho", label: "Vermelho", swatch: "#e60000", photos: [] }
+  ],
+  waCtaLabel: "Quero informações agora",
+  waText: "Olá! Quero informações e valores do modelo Scooter X11."
+}
+```
+
 ### Regras do contrato
 
-- **Sem** campo `summary` / descrição longa no modal.
-- Todas as cores oficiais do modelo aparecem em `colors` (mesmo com `photos: []`).
-- `photos` = ângulos da **mesma** cor (não uma foto por cor).
-- `waCtaLabel`: tom **agressivo / urgente** (ex.: “Quero informações agora”).
-- Link WhatsApp: `https://wa.me/5521973208542?text=` + `encodeURIComponent(waText)`.
-- Número comercial **somente** o confirmado em `PLAN.md`.
-- Paths **case-sensitive** (`../assets/M16.jpeg` para M16).
+- **Sem** `summary` / descrição longa no modal.
+- Todas as cores oficiais do modelo em `colors` (mesmo com `photos: []`).
+- `photos` = ângulos da **mesma** cor.
+- Não referenciar paths antigos já substituídos por `*-{cor}`.
+- WhatsApp: `https://wa.me/5521973208542?text=` + `encodeURIComponent(waText)` (número só o de `PLAN.md`).
+- Paths **case-sensitive**.
 
 ## 7. UX — grade e modal
 
 ### Grade
 
-- Continua **8** modelos.
-- Cards no espírito visual do site (tokens de `styles.css`).
-- Clique no card (ou “Ver detalhes”) abre o modal do `id`.
-- Botão secundário “Consultar Modelo” → WhatsApp (mesmo `waText`), opcional.
+- 8 modelos; tokens de `styles.css`.
+- Clique abre modal; “Consultar Modelo” → WA (opcional).
 
 ### Modal
 
-1. Overlay + painel (`role="dialog"`, `aria-modal="true"`, título = `name`).
-2. **Galeria:** todas as fotos (`photos`) da cor **ativa** (ângulos). Imagem principal + thumbnails ou setas se `photos.length > 1`.
-3. **Swatches:** todas as cores oficiais; clique seleciona a cor.
-4. **Cor com fotos:** troca a galeria para o conjunto daquela cor.
-5. **Cor sem fotos (`photos.length === 0`):** swatch selecionável; galeria mantém as fotos da **última cor com fotos disponível** (fallback) **e** exibe nota discreta: **“Fotos desta cor em breve”**.
-6. CTA principal agressivo (`waCtaLabel`) → WhatsApp comercial.
-7. Fechar: X, clique no overlay, Escape; focus trap básico (foco no modal ao abrir; devolver ao card ao fechar).
+1. Overlay + painel (`role="dialog"`, `aria-modal="true"`).
+2. Galeria = `photos` da cor ativa (ângulos); thumbs se `length > 1`.
+3. Swatches de todas as cores oficiais.
+4. Cor com fotos → troca galeria.
+5. Cor sem fotos → fallback da última cor com fotos + **“Fotos desta cor em breve”**.
+6. CTA agressivo → WA comercial.
+7. Fechar: X, overlay, Escape; foco no modal ao abrir.
 
-**Não** incluir parágrafo de marketing/descrição do modelo no modal.
+**Não** incluir parágrafo de marketing no modal.
 
-```text
-Card → Modal → Swatches (cores PO)
-              → Galeria (ângulos da cor ativa)
-              → Cor sem arquivo → fallback + “em breve”
-```
+## 8. Index (`index.html`)
 
-## 8. Index (`index.html`) — alterações mínimas
-
-| Elemento | Ação |
-|----------|------|
-| `nav` link Catálogo | `href="/catalogos/"` (ou `catalogos/`) |
-| Seção `#catalogo` | Sem grade; CTA “Ver catálogo completo” → `/catalogos/` |
-| CTA Sobre “Conhecer os modelos” | → `/catalogos/` |
-
-Nesta sprint de cores: **não** alterar o index além do já entregue na sprint base.
+Nesta entrega: **não** alterar o index raiz além do já entregue na sprint base.
 
 ## 9. Performance
 
-- `loading="lazy"` nas imagens da grade (exceto as primeiras acima da dobra, se houver).
+- `loading="lazy"` na grade (exceto primeiras acima da dobra, se houver).
 - CSS/JS do catálogo só em `/catalogos/`.
-- Galeria do modal: carregar thumbs sob demanda quando possível.
 
 ## 10. Encoding e deploy
 
-- Todos os arquivos (`.html`, `.css`, `.js`, `.json`): **UTF-8 sem BOM**.
-- Não alterar `vercel.json` / `api/` / `package.json` nesta sprint.
-- Fluxo: implementar em `develop` → Cursor audita → PO testa preview → merge `main`.
+- UTF-8 **sem BOM**.
+- Não alterar `vercel.json` / `api/` / `package.json`.
+- Versionar assets `*-{cor}` no Git; fluxo: `develop` → auditoria → PO preview → `main`.
 
-## 11. Checklist Antigravity (sprint cores / ângulos)
+## 11. Checklist Antigravity (assets por cor — 11/09/2026)
 
-- [ ] Reescrever `catalogos/catalogo-data.js` com cores oficiais, swatches e `photos` (tabela §5); UTF-8 **sem BOM**
-- [ ] Path M16: `../assets/M16.jpeg` (+ `M16-1`, `M16-2`) — case correto
-- [ ] AG MAX: `cardImage` + galeria Cinza com `ag-max*.jpeg` (remover `placeholder-moto.png`)
-- [ ] Modal: `photos.length === 0` → fallback da última cor com fotos + texto “Fotos desta cor em breve”
+- [ ] Reescrever `catalogos/catalogo-data.js` conforme §5; UTF-8 sem BOM
+- [ ] M16 / X13 / DOT / AG MAX com paths `*-{cor}` reais
+- [ ] X13: `preto-brilhoso` + `preto-fosco` (sem `preto` único); carbono com 3 fotos
+- [ ] X11 / X16 / Raptor / Triciclo provisórios
+- [ ] Remover refs a `placeholder-moto.png` e paths antigos substituídos
+- [ ] Modal: fallback + “Fotos desta cor em breve”
 - [ ] Não incluir `WhatsApp Image…`
-- [ ] Não alterar OAuth, footer, assistência, legais
-- [ ] Push `develop` para o PO validar o preview
+- [ ] Não alterar OAuth, footer, assistência, legais, index raiz
+- [ ] Push `develop` com assets versionados para preview
 
-## 12. Critérios de aceite (sprint cores)
+## 12. Critérios de aceite
 
-- [ ] Cada modelo lista **todas** as cores oficiais no seletor
-- [ ] Galeria da cor com arquivos mostra **ângulos** (várias fotos da mesma cor)
-- [ ] Cor sem fotos: selecionável + fallback visual + “Fotos desta cor em breve”
-- [ ] AG MAX usa `ag-max*.jpeg` (sem placeholder)
-- [ ] Paths case-sensitive corretos (esp. M16)
+- [ ] Modelos com `*-{cor}` mostram ângulos **por cor** no modal
+- [ ] X13 lista as 6 cores (brilhoso, fosco, branco, azul, vermelho, carbono)
+- [ ] Carbono X13 funciona com 3 fotos (sem 404 de `-3`)
+- [ ] Provisórios: 1ª cor com foto única; demais com “em breve”
+- [ ] AG MAX usa `ag-max-*-cinza.jpeg`
+- [ ] Case `M16-…` correto
 - [ ] WhatsApp = comercial de `PLAN.md`
-- [ ] Arquivos sem BOM; escopo respeitado
+- [ ] Sem BOM; escopo respeitado

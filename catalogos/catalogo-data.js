@@ -1,6 +1,6 @@
 /**
  * catalogo-data.js — Fonte de verdade dos modelos do catálogo Elite Rodas.
- * Conforme especificações em SDD.md (§§4-7) e PLAN.md (Sprint Cores e Ângulos).
+ * Conforme especificações em SDD.md (§§4-7) e PLAN.md (Sprint Assets por Cor - 11/09/2026).
  * Sem BOM (UTF-8 puro).
  */
 
@@ -27,24 +27,74 @@ const CATALOGO_MODELOS = [
   {
     id: "x13",
     name: "Scooter X13",
-    cardImage: "../assets/x13.jpeg",
+    cardImage: "../assets/x13-preto-brilhoso.jpeg",
     specs: ["Velocidade até 60-70 km/h", "Freio a Disco", "Painel Digital"],
     colors: [
       {
-        id: "preto",
-        label: "Preto",
+        id: "preto-brilhoso",
+        label: "Preto brilhoso",
         swatch: "#111111",
         photos: [
-          "../assets/x13.jpeg",
-          "../assets/x13-1.jpeg",
-          "../assets/x13-2.jpeg",
-          "../assets/x13-3.jpeg"
+          "../assets/x13-preto-brilhoso.jpeg",
+          "../assets/x13-1-preto-brilhoso.jpeg",
+          "../assets/x13-2-preto-brilhoso.jpeg",
+          "../assets/x13-3-preto-brilhoso.jpeg"
         ]
       },
-      { id: "branco", label: "Branco", swatch: "#f2f2f2", photos: [] },
-      { id: "azul", label: "Azul", swatch: "#1e4fd6", photos: [] },
-      { id: "vermelho", label: "Vermelho", swatch: "#e60000", photos: [] },
-      { id: "carbono", label: "Carbono", swatch: "#2a2a2a", photos: [] }
+      {
+        id: "preto-fosco",
+        label: "Preto fosco",
+        swatch: "#3d3d3d",
+        photos: [
+          "../assets/x13-preto-fosco.jpeg",
+          "../assets/x13-1-preto-fosco.jpeg",
+          "../assets/x13-2-preto-fosco.jpeg",
+          "../assets/x13-3-preto-fosco.jpeg"
+        ]
+      },
+      {
+        id: "branco",
+        label: "Branco",
+        swatch: "#f2f2f2",
+        photos: [
+          "../assets/x13-branco.jpeg",
+          "../assets/x13-1-branco.jpeg",
+          "../assets/x13-2-branco.jpeg",
+          "../assets/x13-3-branco.jpeg"
+        ]
+      },
+      {
+        id: "azul",
+        label: "Azul",
+        swatch: "#1e4fd6",
+        photos: [
+          "../assets/x13-azul.jpeg",
+          "../assets/x13-1-azul.jpeg",
+          "../assets/x13-2-azul.jpeg",
+          "../assets/x13-3-azul.jpeg"
+        ]
+      },
+      {
+        id: "vermelho",
+        label: "Vermelho",
+        swatch: "#e60000",
+        photos: [
+          "../assets/x13-vermelho.jpeg",
+          "../assets/x13-1-vermelho.jpeg",
+          "../assets/x13-2-vermelho.jpeg",
+          "../assets/x13-3-vermelho.jpeg"
+        ]
+      },
+      {
+        id: "carbono",
+        label: "Carbono",
+        swatch: "#2a2a2a",
+        photos: [
+          "../assets/x13-carbono.jpeg",
+          "../assets/x13-1-carbono.jpeg",
+          "../assets/x13-2-carbono.jpeg"
+        ]
+      }
     ],
     waCtaLabel: "Quero informações agora",
     waText: "Olá! Quero informações e valores do modelo Scooter X13."
@@ -71,7 +121,7 @@ const CATALOGO_MODELOS = [
   {
     id: "dot",
     name: "Scooter DOT",
-    cardImage: "../assets/dot.jpeg",
+    cardImage: "../assets/dot-preto.jpeg",
     specs: ["Motor 1000W", "Partida na Pulseira NFC", "Carregador USB"],
     colors: [
       {
@@ -79,13 +129,31 @@ const CATALOGO_MODELOS = [
         label: "Preto",
         swatch: "#111111",
         photos: [
-          "../assets/dot.jpeg",
-          "../assets/dot-1.jpeg",
-          "../assets/dot-2.jpeg"
+          "../assets/dot-preto.jpeg",
+          "../assets/dot-1-preto.jpeg",
+          "../assets/dot-2-preto.jpeg"
         ]
       },
-      { id: "branco", label: "Branco", swatch: "#f2f2f2", photos: [] },
-      { id: "cinza", label: "Cinza", swatch: "#8a8a8a", photos: [] }
+      {
+        id: "branco",
+        label: "Branco",
+        swatch: "#f2f2f2",
+        photos: [
+          "../assets/dot-branco.jpeg",
+          "../assets/dot-1-branco.jpeg",
+          "../assets/dot-2-branco.jpeg"
+        ]
+      },
+      {
+        id: "cinza",
+        label: "Cinza",
+        swatch: "#8a8a8a",
+        photos: [
+          "../assets/dot-cinza.jpeg",
+          "../assets/dot-1-cinza.jpeg",
+          "../assets/dot-2-cinza.jpeg"
+        ]
+      }
     ],
     waCtaLabel: "Quero informações agora",
     waText: "Olá! Quero informações e valores do modelo Scooter DOT."
@@ -93,7 +161,7 @@ const CATALOGO_MODELOS = [
   {
     id: "m16",
     name: "Scooter M16",
-    cardImage: "../assets/M16.jpeg",
+    cardImage: "../assets/M16-cinza.jpeg",
     specs: ["Motor 600W", "Banco para 2 pessoas", "Farol em LED"],
     colors: [
       {
@@ -101,12 +169,21 @@ const CATALOGO_MODELOS = [
         label: "Cinza",
         swatch: "#8a8a8a",
         photos: [
-          "../assets/M16.jpeg",
-          "../assets/M16-1.jpeg",
-          "../assets/M16-2.jpeg"
+          "../assets/M16-cinza.jpeg",
+          "../assets/M16-1-cinza.jpeg",
+          "../assets/M16-2-cinza.jpeg"
         ]
       },
-      { id: "verde-claro", label: "Verde claro", swatch: "#7dce7a", photos: [] }
+      {
+        id: "verde-claro",
+        label: "Verde claro",
+        swatch: "#7dce7a",
+        photos: [
+          "../assets/M16-verde-claro.jpeg",
+          "../assets/M16-1-verde-claro.jpeg",
+          "../assets/M16-2-verde-claro.jpeg"
+        ]
+      }
     ],
     waCtaLabel: "Quero informações agora",
     waText: "Olá! Quero informações e valores do modelo Scooter M16."
@@ -149,7 +226,7 @@ const CATALOGO_MODELOS = [
   {
     id: "ag-max",
     name: "AG MAX",
-    cardImage: "../assets/ag-max.jpeg",
+    cardImage: "../assets/ag-max-cinza.jpeg",
     specs: ["Consulte"],
     colors: [
       {
@@ -157,9 +234,9 @@ const CATALOGO_MODELOS = [
         label: "Cinza",
         swatch: "#8a8a8a",
         photos: [
-          "../assets/ag-max.jpeg",
-          "../assets/ag-max-1.jpeg",
-          "../assets/ag-max-2.jpeg"
+          "../assets/ag-max-cinza.jpeg",
+          "../assets/ag-max-1-cinza.jpeg",
+          "../assets/ag-max-2-cinza.jpeg"
         ]
       }
     ],

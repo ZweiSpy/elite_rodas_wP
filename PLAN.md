@@ -254,50 +254,67 @@ Ordem sugerida: `catalogo-data.js` → `catalogos/index.html` + CSS → modal JS
 
 ## Sprint: Cores e ângulos do catálogo (documentação 10/09/2026 — implementação Antigravity)
 
-Spec: seção **Cores e ângulos** em [`SDD.md`](SDD.md).
+Spec: [`SDD.md`](SDD.md). **Atualização PO 11/09/2026:** assets renomeados para `{modelo}[-{n}]-{cor}.jpeg` (M16, X13, DOT, AG MAX).
 
 ### Decisões do PO
 
 | Item | Decisão |
 |------|---------|
-| Fotos `modelo`, `modelo-1`, `modelo-2`… | **Mesma cor**, ângulos diferentes; numeração só diferencia ângulo |
-| Padrão de nome futuro | `{modelo}[-{n}]-{cor}.jpeg` — **cor por último** (ex.: `x13-preto.jpeg`, `x13-1-preto.jpeg`) |
-| Cores oficiais | Tabela abaixo (todas no seletor do modal) |
-| Cores sem arquivo ainda | Swatch visível; galeria com **fallback** da cor que já tem fotos + nota “Fotos desta cor em breve” |
-| `WhatsApp Image…` em `assets/` | **Ignorar** — não usar no catálogo |
-| AG MAX | Usar `ag-max.jpeg`, `ag-max-1.jpeg`, `ag-max-2.jpeg` (remover placeholder do card) |
+| Padrão de nome | `{modelo}[-{n}]-{cor}.jpeg` — **cor sempre por último** |
+| Ângulos | `modelo-cor`, `modelo-1-cor`, `modelo-2-cor`… = **mesma cor**, ângulos diferentes |
+| Cores sem arquivo | Swatch visível; fallback da última cor com fotos + “Fotos desta cor em breve” |
+| `WhatsApp Image…` / `placeholder-moto.png` | **Ignorar** — não usar no catálogo |
+| X13 — Preto | Substituído por **Preto brilhoso** + **Preto fosco** (confirmado PO 11/09/2026) |
+| X13 — Carbono | **3 ângulos** agora (`x13-carbono`, `-1-`, `-2-`); **4º ângulo** = pendência futura do PO (não bloqueia esta sprint) |
+| X11 / X16 / Raptor / Triciclo | Permanecem **provisórios** (arquivo sem sufixo de cor na 1ª cor) até o PO entregar `*-{cor}` |
 
-### Cores oficiais + mapeamento provisório de assets
+### Auditoria prévia (10–11/09/2026)
 
-Até o rename `*-{cor}`, **todas as fotos atuais do modelo** vão para a **primeira cor** da lista; demais cores com `photos: []`.
+Entrega Antigravity da fase provisória (1ª cor com fotos antigas): **APROVADA** no código, com ressalvas de versionamento Git/case `M16` no deploy. Esta atualização **substitui** o mapeamento provisório onde há `*-{cor}`.
 
-| Modelo | Cores (ordem) | Arquivos atuais → 1ª cor (provisório) |
-|--------|---------------|----------------------------------------|
-| M16 | Cinza, Verde claro | `M16.jpeg`, `M16-1.jpeg`, `M16-2.jpeg` → Cinza |
-| X13 | Preto, Branco, Azul, Vermelho, Carbono | `x13.jpeg` … `x13-3.jpeg` → Preto |
-| X11 | Preto, Branco, Azul, Vermelho | `x11.jpeg` → Preto |
-| DOT | Preto, Branco, Cinza | `dot.jpeg`, `dot-1.jpeg`, `dot-2.jpeg` → Preto |
-| X16 | Preto, Branco, Azul, Vermelho | `x16.jpeg` → Preto |
-| AG MAX | Cinza | `ag-max.jpeg`, `ag-max-1.jpeg`, `ag-max-2.jpeg` → Cinza |
-| Raptor | Vermelho, Preto, Cinza | `raptor.jpeg` → Vermelho |
-| Triciclo BIG | Bege, Preto | `triciclo.jpeg` → Bege |
+### Mapeamento de assets (11/09/2026)
 
-**Case Vercel (Linux):** paths exatos — `M16.jpeg` (não `m16.jpeg`).
+**Case Vercel (Linux):** paths exatos — prefixo `M16-` com **M maiúsculo**.
 
-### Pendência para Antigravity (cores / ângulos)
+#### Com `*-{cor}` (usar paths abaixo em `catalogo-data.js`)
 
-- [ ] Reescrever `catalogos/catalogo-data.js` com cores oficiais, swatches e `photos` conforme `SDD.md` (UTF-8 **sem BOM**)
-- [ ] Corrigir path M16 → `../assets/M16.jpeg` (e variantes com `M` maiúsculo)
-- [ ] AG MAX: `cardImage` + galeria Cinza com `ag-max*.jpeg` (sem `placeholder-moto.png`)
-- [ ] Modal: se `photos.length === 0`, fallback da última cor com fotos + texto “Fotos desta cor em breve”
-- [ ] Não incluir arquivos `WhatsApp Image…`
-- [ ] Não alterar OAuth, footer, assistência fora do escopo
-- [ ] Push `develop` para o PO validar preview
+| Modelo | id | Cores (ordem no seletor) | Arquivos `photos` por cor |
+|--------|----|--------------------------|---------------------------|
+| M16 | `m16` | Cinza, Verde claro | **Cinza:** `M16-cinza.jpeg`, `M16-1-cinza.jpeg`, `M16-2-cinza.jpeg` · **Verde claro:** `M16-verde-claro.jpeg`, `M16-1-verde-claro.jpeg`, `M16-2-verde-claro.jpeg` |
+| X13 | `x13` | Preto brilhoso, Preto fosco, Branco, Azul, Vermelho, Carbono | **Preto brilhoso:** `x13-preto-brilhoso.jpeg` … `x13-3-preto-brilhoso.jpeg` · **Preto fosco:** `x13-preto-fosco.jpeg` … `x13-3-preto-fosco.jpeg` · **Branco:** `x13-branco.jpeg` … `x13-3-branco.jpeg` · **Azul:** `x13-azul.jpeg` … `x13-3-azul.jpeg` · **Vermelho:** `x13-vermelho.jpeg` … `x13-3-vermelho.jpeg` · **Carbono:** `x13-carbono.jpeg`, `x13-1-carbono.jpeg`, `x13-2-carbono.jpeg` (sem `-3` nesta sprint) |
+| DOT | `dot` | Preto, Branco, Cinza | **Preto:** `dot-preto.jpeg`, `dot-1-preto.jpeg`, `dot-2-preto.jpeg` · **Branco:** `dot-branco.jpeg`, `dot-1-branco.jpeg`, `dot-2-branco.jpeg` · **Cinza:** `dot-cinza.jpeg`, `dot-1-cinza.jpeg`, `dot-2-cinza.jpeg` |
+| AG MAX | `ag-max` | Cinza | **Cinza:** `ag-max-cinza.jpeg`, `ag-max-1-cinza.jpeg`, `ag-max-2-cinza.jpeg` |
 
-### Pendências do PO (após Antigravity — cores)
+Paths no JS: prefixo `../assets/` (ex.: `../assets/M16-cinza.jpeg`).
 
-- Renomear assets para `*-{cor}` e completar fotos faltantes
-- Validar preview e autorizar merge `main`
+#### Ainda provisórios (sem sufixo de cor)
+
+| Modelo | id | Cores (ordem) | Arquivos → 1ª cor | Demais cores |
+|--------|----|---------------|-------------------|--------------|
+| X11 | `x11` | Preto, Branco, Azul, Vermelho | `x11.jpeg` → Preto | `photos: []` |
+| X16 | `x16` | Preto, Branco, Azul, Vermelho | `x16.jpeg` → Preto | `photos: []` |
+| Raptor | `raptor` | Vermelho, Preto, Cinza | `raptor.jpeg` → Vermelho | `photos: []` |
+| Triciclo BIG | `triciclo-big` | Bege, Preto | `triciclo.jpeg` → Bege | `photos: []` |
+
+### Pendência para Antigravity (assets por cor — 11/09/2026)
+
+- [ ] Reescrever `catalogos/catalogo-data.js` com a tabela acima (ids/labels/swatches/`photos`); UTF-8 **sem BOM**
+- [ ] Remover paths antigos sem cor onde o PO já entregou `*-{cor}` (`x13.jpeg`, `M16.jpeg`, `dot.jpeg`, `ag-max.jpeg`, etc.)
+- [ ] `cardImage` = primeira foto da primeira cor que tiver `photos.length > 0`
+- [ ] X13: **sem** cor `preto` única — usar `preto-brilhoso` e `preto-fosco`
+- [ ] X13 carbono: exatamente 3 fotos listadas; não inventar `x13-3-carbono.jpeg`
+- [ ] X11 / X16 / Raptor / Triciclo: manter regra provisória
+- [ ] Modal: manter fallback + “Fotos desta cor em breve” onde `photos: []`
+- [ ] Não incluir `WhatsApp Image…` nem `placeholder-moto.png`
+- [ ] Não alterar OAuth, footer, assistência, legais, `index.html` raiz
+- [ ] Versionar no Git os assets `*-{cor}` novos + paths case-sensitive; push `develop` para preview
+
+### Pendências do PO (após esta entrega)
+
+- Validar preview `develop` e autorizar merge `main`
+- Entregar `*-{cor}` para X11, X16, Raptor e Triciclo BIG
+- Entregar **4º ângulo** do X13 Carbono (`x13-3-carbono.jpeg`) em sprint futura
+- Refino de copy WA, se desejar
 
 ---
 
@@ -305,4 +322,4 @@ Até o rename `*-{cor}`, **todas as fotos atuais do modelo** vão para a **prime
 
 - Encarregado/DPO com nome dedicado (canal atual: adm.eliterodas@gmail.com)
 - Prazo específico de retenção de dados (texto usa linguagem genérica conforme finalidades e obrigações legais)
-- Assets definitivos do catálogo (rename `*-{cor}` + cores faltantes)
+- Completar assets `*-{cor}` dos modelos ainda provisórios + 4º ângulo carbono X13

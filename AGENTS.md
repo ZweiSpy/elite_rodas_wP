@@ -52,6 +52,7 @@
 - [ ] `package.json` / `vercel.json` parseiam se alterados
 - [ ] Números, URLs e modelos só os documentados
 - [ ] Site institucional / OAuth / footer intocados se fora do escopo
+- [ ] Paths de assets case-sensitive e arquivos `*-{cor}` versionados no Git
 
 ## Regras para Antigravity
 
@@ -65,15 +66,17 @@
 - Declarar ausência de cookies e GA nesta versão do site (páginas legais).
 - Parar e perguntar ao PO em caso de dúvida.
 
-### Sprint Catálogo — cores e ângulos (atual)
+### Sprint atual — assets por cor (11/09/2026)
 
 - Seguir **`SDD.md`** §§4–7 e checklist §11; tabela em **`PLAN.md`**.
-- Convenção futura: `{modelo}[-{n}]-{cor}.jpeg` (cor por último). Hoje: ângulos `modelo`, `modelo-1`… = **mesma cor**.
-- `catalogo-data.js`: cores oficiais do PO; `photos` = ângulos; cores sem arquivo → `photos: []`.
-- Modal: cor sem fotos → **fallback** da cor com fotos + “Fotos desta cor em breve”.
-- AG MAX: `ag-max*.jpeg` (sem placeholder). Paths case-sensitive (`M16.jpeg`).
-- Ignorar `WhatsApp Image…`. WhatsApp catálogo: **(21) 97320-8542**.
-- Não alterar index/footer/OAuth nesta sprint além do necessário no modal/`catalogo-data.js`.
+- Padrão: `{modelo}[-{n}]-{cor}.jpeg` (cor por último).
+- **M16, X13, DOT, AG MAX:** `photos` com paths `*-{cor}` reais (não usar nomes antigos sem cor).
+- **X13:** cores `preto-brilhoso` + `preto-fosco` (não `preto` único); carbono com **3** fotos; não inventar `x13-3-carbono.jpeg`.
+- **X11, X16, Raptor, Triciclo:** provisórios (arquivo sem cor na 1ª cor; demais `photos: []`).
+- Case: `M16-cinza.jpeg` etc. com **M maiúsculo**.
+- Modal: cor sem fotos → fallback + “Fotos desta cor em breve”.
+- Ignorar `WhatsApp Image…` e `placeholder-moto.png`. WhatsApp catálogo: **(21) 97320-8542**.
+- Não alterar index raiz / footer / OAuth / legais nesta sprint.
 
 ### Footer (`index.html`) — layout (já entregue; não redesenhar nesta sprint)
 
@@ -84,15 +87,17 @@
 ### Proibido
 
 - Inventar CNPJ, contatos, URLs, cores oficiais ou fotos não confirmadas pelo PO.
-- Alterar OAuth, footer, assistência, legais nesta sprint de catálogo.
+- Inventar `x13-3-carbono.jpeg` ou `*-{cor}` dos modelos provisórios.
+- Alterar OAuth, footer, assistência, legais nesta sprint.
 - Cursor implementar HTML/CSS no lugar do Antigravity (exceto ordem explícita do PO).
 - Commitar arquivos com BOM UTF-8.
-- Incluir arquivos `WhatsApp Image…` no catálogo.
+- Incluir arquivos `WhatsApp Image…` / `placeholder-moto.png` no catálogo.
 
-### Arquivos permitidos — sprint Cores / ângulos
+### Arquivos permitidos — sprint assets por cor
 
 - `catalogos/catalogo-data.js` (reescrever cores + photos)
-- `catalogos/index.html` / `catalogos/catalogo.css` (somente fallback “em breve” no modal)
+- `catalogos/index.html` / `catalogos/catalogo.css` (somente se o fallback/modal já não cobrir a UX)
+- `assets/` — versionar os `*-{cor}` entregues pelo PO (sem `WhatsApp Image…`)
 - Documentos-verdade: só Cursor (`PLAN.md`, `SDD.md`, `AGENTS.md`)
 
 ## Referências legais (Brasil)
