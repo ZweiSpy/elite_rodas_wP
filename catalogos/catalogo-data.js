@@ -100,23 +100,34 @@ const CATALOGO_MODELOS = [
     waText: "Olá! Quero informações e valores do modelo Scooter X13."
   },
   {
-    id: "x16",
-    name: "Scooter X16",
-    cardImage: "../assets/x16.jpeg",
-    specs: ["Design Moderno", "Alta Performance", "Consulte"],
+    id: "tank-pro",
+    name: "Scooter Tank Pro",
+    cardImage: "../assets/TankPRO-preto.jpg",
+    specs: ["Design Robusto", "Alta Performance", "Consulte"],
     colors: [
       {
         id: "preto",
         label: "Preto",
         swatch: "#111111",
-        photos: ["../assets/x16.jpeg"]
+        photos: [
+          "../assets/TankPRO-preto.jpg",
+          "../assets/TankPRO-1-preto.jpg",
+          "../assets/TankPRO-2-preto.jpg"
+        ]
       },
-      { id: "branco", label: "Branco", swatch: "#f2f2f2", photos: [] },
-      { id: "azul", label: "Azul", swatch: "#1e4fd6", photos: [] },
-      { id: "vermelho", label: "Vermelho", swatch: "#e60000", photos: [] }
+      {
+        id: "branco",
+        label: "Branco",
+        swatch: "#f2f2f2",
+        photos: [
+          "../assets/TankPRO-branco.jpg",
+          "../assets/TankPRO-1-branco.jpg",
+          "../assets/TankPRO-2-branco.jpg"
+        ]
+      }
     ],
     waCtaLabel: "Quero informações agora",
-    waText: "Olá! Quero informações e valores do modelo Scooter X16."
+    waText: "Olá! Quero informações e valores do modelo Scooter Tank Pro."
   },
   {
     id: "dot",
