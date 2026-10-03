@@ -561,6 +561,7 @@ body.modal-open {
   margin-top: 0.65rem;
 }
 
+.btn--modal-testdrive,
 .btn--modal-testride {
   background: transparent;
   color: var(--text-secondary);
@@ -581,12 +582,14 @@ body.modal-open {
   transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 
+.btn--modal-testdrive:hover,
 .btn--modal-testride:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: rgba(230, 0, 0, 0.08);
 }
 
+.btn--modal-testdrive svg,
 .btn--modal-testride svg {
   width: 18px;
   height: 18px;

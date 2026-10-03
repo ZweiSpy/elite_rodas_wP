@@ -177,7 +177,7 @@
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-              <span>Agendar Test-Ride deste Modelo</span>
+              <span>Agendar Test-Drive deste Modelo</span>
             </a>
           </div>
 
@@ -463,11 +463,11 @@
         modalWaCta.href = buildWhatsAppUrl(customWaText);
 
         if (modalWaTestride) {
-          let testRideText = 'Olá! Gostaria de agendar um Test-Ride presencial na loja para o modelo ' + currentModel.name + '.';
+          let testDriveText = 'Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + currentModel.name + '.';
           if (colorObj.id !== 'ref') {
-            testRideText = 'Olá! Gostaria de agendar um Test-Ride presencial na loja para o modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
+            testDriveText = 'Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
           }
-          modalWaTestride.href = buildWhatsAppUrl(testRideText);
+          modalWaTestride.href = buildWhatsAppUrl(testDriveText);
         }
       }
 
@@ -480,7 +480,7 @@
         modalWaLabel.textContent = model.waCtaLabel || 'Quero informações agora';
 
         if (modalWaTestride) {
-          modalWaTestride.href = buildWhatsAppUrl('Olá! Gostaria de agendar um Test-Ride presencial na loja para o modelo ' + model.name + '.');
+          modalWaTestride.href = buildWhatsAppUrl('Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + model.name + '.');
         }
 
         // Specs

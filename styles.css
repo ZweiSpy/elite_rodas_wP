@@ -1155,7 +1155,8 @@ ul {
   color: var(--accent);
 }
 
-/* ── Test-Ride Presencial ── */
+/* ── Test-Drive Presencial ── */
+.testdrive,
 .testride {
   padding: 4rem 0;
 }
