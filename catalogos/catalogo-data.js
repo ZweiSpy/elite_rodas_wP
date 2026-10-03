@@ -8,18 +8,31 @@ const CATALOGO_MODELOS = [
   {
     id: "x11",
     name: "Scooter X11",
-    cardImage: "../assets/x11.jpeg",
+    cardImage: "../assets/X11-preto.jpg",
     specs: ["Velocidade até 60 km/h", "Autonomia 30-40km", "Banco para 2 pessoas"],
     colors: [
       {
         id: "preto",
         label: "Preto",
         swatch: "#111111",
-        photos: ["../assets/x11.jpeg"]
+        photos: [
+          "../assets/X11-preto.jpg",
+          "../assets/X11-1-preto.jpg",
+          "../assets/X11-2-preto.jpg"
+        ]
+      },
+      {
+        id: "vermelho",
+        label: "Vermelho",
+        swatch: "#e60000",
+        photos: [
+          "../assets/X11-vermelho.jpg",
+          "../assets/X11-1-vermelho.jpg",
+          "../assets/X11-2-vermelho.jpg"
+        ]
       },
       { id: "branco", label: "Branco", swatch: "#f2f2f2", photos: [] },
-      { id: "azul", label: "Azul", swatch: "#1e4fd6", photos: [] },
-      { id: "vermelho", label: "Vermelho", swatch: "#e60000", photos: [] }
+      { id: "azul", label: "Azul", swatch: "#1e4fd6", photos: [] }
     ],
     waCtaLabel: "Quero informações agora",
     waText: "Olá! Quero informações e valores do modelo Scooter X11."
@@ -215,24 +228,6 @@ const CATALOGO_MODELOS = [
     ],
     waCtaLabel: "Quero informações agora",
     waText: "Olá! Quero informações e valores do modelo Triciclo BIG."
-  },
-  {
-    id: "raptor",
-    name: "Scooter Raptor",
-    cardImage: "../assets/raptor.jpeg",
-    specs: ["Design Esportivo", "Máxima Potência", "Consulte"],
-    colors: [
-      {
-        id: "vermelho",
-        label: "Vermelho",
-        swatch: "#e60000",
-        photos: ["../assets/raptor.jpeg"]
-      },
-      { id: "preto", label: "Preto", swatch: "#111111", photos: [] },
-      { id: "cinza", label: "Cinza", swatch: "#8a8a8a", photos: [] }
-    ],
-    waCtaLabel: "Quero informações agora",
-    waText: "Olá! Quero informações e valores do modelo Scooter Raptor."
   },
   {
     id: "ag-max",
