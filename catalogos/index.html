@@ -82,6 +82,26 @@
         </p>
       </header>
 
+      <!-- Barra de Destaques e Confiança -->
+      <div class="catalog-trust-bar" aria-label="Garantias e facilidades da Elite Rodas">
+        <div class="catalog-trust-item">
+          <span class="catalog-trust-icon" aria-hidden="true">✓</span>
+          <span><strong>100% Sem CNH:</strong> Autopropelidos (Res. CONTRAN 996/23)</span>
+        </div>
+        <div class="catalog-trust-item">
+          <span class="catalog-trust-icon" aria-hidden="true">✓</span>
+          <span><strong>Até 21x no Cartão</strong> · Pix ou Dinheiro</span>
+        </div>
+        <div class="catalog-trust-item">
+          <span class="catalog-trust-icon" aria-hidden="true">✓</span>
+          <span><strong>Programa Upgrade:</strong> Sua moto usada como entrada*</span>
+        </div>
+        <div class="catalog-trust-item">
+          <span class="catalog-trust-icon" aria-hidden="true">✓</span>
+          <span><strong>Recarga Bivolt:</strong> Tomada comum 110V/220V</span>
+        </div>
+      </div>
+
       <!-- Grade de Cards Dinâmica -->
       <div id="catalog-grid" class="catalog-grid" aria-label="Modelos de motos e scooters elétricas">
         <!-- Renderizado dinamicamente via catalogo-data.js -->
@@ -126,6 +146,13 @@
             
             <div class="modal-info__specs-title">Destaques do Modelo</div>
             <ul id="modal-specs" class="modal-info__specs-list"></ul>
+
+            <div class="modal-badges" aria-label="Vantagens do modelo">
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> 100% Sem CNH</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Bivolt 110V/220V</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Cartão até 21x</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Programa Upgrade</span>
+            </div>
           </div>
 
           <!-- Seletor de Cores -->
@@ -144,6 +171,14 @@
               <span id="modal-wa-label">Quero informações agora</span>
             </a>
             <p class="modal-actions__note">Fale diretamente com nossa equipe de vendas no WhatsApp Comercial.</p>
+
+            <a id="modal-wa-testride" href="#" target="_blank" rel="noopener noreferrer" class="btn--modal-testride">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Agendar Test-Ride deste Modelo</span>
+            </a>
           </div>
 
         </div>
@@ -234,18 +269,36 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Flutuante -->
-  <a
-    href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Vim%20pelo%20cat%C3%A1logo%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas."
-    class="whatsapp-float"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Fale conosco pelo WhatsApp"
-  >
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-  </a>
+  <!-- WhatsApp Flutuante com Tooltip Proativo -->
+  <div class="whatsapp-float-container" id="wa-float-container">
+    <div class="whatsapp-tooltip" id="wa-tooltip" role="dialog" aria-live="polite" aria-label="Mensagem de atendimento">
+      <div class="whatsapp-tooltip__header">
+        <span class="whatsapp-tooltip__status">
+          <span class="whatsapp-tooltip__status-dot"></span>
+          Consultor Online
+        </span>
+        <button type="button" class="whatsapp-tooltip__close" id="wa-tooltip-close" aria-label="Fechar notificação">×</button>
+      </div>
+      <p class="whatsapp-tooltip__message">
+        Dúvidas sobre modelos, <strong>100% Sem CNH</strong> ou <strong>parcelamento em até 21x</strong>?
+      </p>
+      <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20os%20modelos%20do%20cat%C3%A1logo%20e%20formas%20de%20pagamento." class="whatsapp-tooltip__link" target="_blank" rel="noopener noreferrer">
+        Falar no WhatsApp agora →
+      </a>
+    </div>
+
+    <a
+      href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Vim%20pelo%20cat%C3%A1logo%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20motos%20el%C3%A9tricas."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Fale conosco pelo WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+  </div>
 
   <!-- Scripts -->
   <script src="catalogo-data.js"></script>
@@ -267,6 +320,7 @@
       const modalColorName = document.getElementById('modal-color-name');
       const modalWaCta = document.getElementById('modal-wa-cta');
       const modalWaLabel = document.getElementById('modal-wa-label');
+      const modalWaTestride = document.getElementById('modal-wa-testride');
 
       let currentModel = null;
       let currentColor = null;
@@ -407,6 +461,14 @@
           customWaText = 'Olá! Quero informações e valores do modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
         }
         modalWaCta.href = buildWhatsAppUrl(customWaText);
+
+        if (modalWaTestride) {
+          let testRideText = 'Olá! Gostaria de agendar um Test-Ride presencial na loja para o modelo ' + currentModel.name + '.';
+          if (colorObj.id !== 'ref') {
+            testRideText = 'Olá! Gostaria de agendar um Test-Ride presencial na loja para o modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
+          }
+          modalWaTestride.href = buildWhatsAppUrl(testRideText);
+        }
       }
 
       // Abrir Modal
@@ -416,6 +478,10 @@
 
         modalTitle.textContent = model.name;
         modalWaLabel.textContent = model.waCtaLabel || 'Quero informações agora';
+
+        if (modalWaTestride) {
+          modalWaTestride.href = buildWhatsAppUrl('Olá! Gostaria de agendar um Test-Ride presencial na loja para o modelo ' + model.name + '.');
+        }
 
         // Specs
         modalSpecs.innerHTML = (model.specs || [])
@@ -488,6 +554,24 @@
 
       // Inicializar
       renderGrid();
+
+      // Tooltip Proativo do WhatsApp Flutuante
+      var tooltip = document.getElementById('wa-tooltip');
+      var closeBtn = document.getElementById('wa-tooltip-close');
+      if (tooltip && closeBtn) {
+        var dismissed = sessionStorage.getItem('wa_tooltip_closed');
+        if (!dismissed) {
+          setTimeout(function() {
+            tooltip.classList.add('is-visible');
+          }, 4000);
+        }
+
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          tooltip.classList.remove('is-visible');
+          sessionStorage.setItem('wa_tooltip_closed', 'true');
+        });
+      }
     })();
   </script>
 </body>

@@ -340,6 +340,31 @@ ul {
   gap: 0.75rem;
 }
 
+.hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.785rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.hero__pill-icon {
+  color: #25D366;
+  font-weight: 700;
+}
+
 .hero__visual {
   display: flex;
   justify-content: center;
@@ -883,6 +908,453 @@ ul {
   }
 }
 
+/* ── Economia Comparativo (Gasolina vs. Elétrica) ── */
+.economy {
+  padding: 5rem 0;
+  position: relative;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, #171717 50%, var(--bg-primary) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.economy__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.economy__header .section-subtitle {
+  margin: 0.5rem auto 0;
+}
+
+.economy__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 0 auto 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .economy__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.economy-card {
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.economy-card--gas {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.economy-card--electric {
+  background: linear-gradient(145deg, rgba(230, 0, 0, 0.08) 0%, rgba(37, 211, 102, 0.04) 100%);
+  border: 2px solid rgba(37, 211, 102, 0.45);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(37, 211, 102, 0.12);
+}
+
+.economy-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+}
+
+.economy-card--gas .economy-card__tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.economy-card--electric .economy-card__tag {
+  background: rgba(37, 211, 102, 0.2);
+  color: #25D366;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+}
+
+.economy-card__title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.economy-card__desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.economy-card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.economy-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.economy-card__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.economy-card--gas .economy-card__icon {
+  background: rgba(230, 0, 0, 0.15);
+  color: #ff5555;
+}
+
+.economy-card--electric .economy-card__icon {
+  background: rgba(37, 211, 102, 0.18);
+  color: #25D366;
+}
+
+.economy-card__highlight {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-top: auto;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.economy-card--electric .economy-card__highlight {
+  border-color: rgba(37, 211, 102, 0.4);
+  background: rgba(37, 211, 102, 0.08);
+}
+
+.economy-card__highlight-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.economy-card--electric .economy-card__highlight-value {
+  color: #25D366;
+}
+
+.economy-card__highlight-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.economy__cta-bar {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* ── Vantagens & Quebra de Objeções ── */
+.advantages {
+  padding: 5rem 0;
+}
+
+.advantages__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.advantages__header .section-subtitle {
+  margin: 0.5rem auto 0;
+}
+
+.advantages__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.advantage-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.advantage-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 0, 0, 0.5);
+  box-shadow: 0 14px 36px rgba(230, 0, 0, 0.18);
+}
+
+.advantage-card__icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(230, 0, 0, 0.12);
+  border: 1px solid rgba(230, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+}
+
+.advantage-card__icon-box svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.advantage-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.advantage-card__text {
+  font-size: 0.925rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.advantage-card__badge {
+  margin-top: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ── Test-Ride Presencial ── */
+.testride {
+  padding: 4rem 0;
+}
+
+.testride__card {
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.16) 0%, #1c1c1c 45%, #151515 100%);
+  border: 1px solid rgba(230, 0, 0, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 850px) {
+  .testride__card {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+.testride__card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(230,0,0,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.testride__info {
+  position: relative;
+  z-index: 1;
+}
+
+.testride__title {
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0.5rem 0 1rem;
+  line-height: 1.2;
+}
+
+.testride__text {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.testride__points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.testride__point {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+}
+
+.testride__point svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--accent);
+  flex-shrink: 0;
+}
+
+.testride__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 2.25rem 1.75rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.testride__action-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.testride__action-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.testride__action .btn {
+  width: 100%;
+}
+
+/* ── FAQ Estratégico (<details> e <summary>) ── */
+.faq {
+  padding: 5rem 0;
+  background: #0d0d0d;
+  border-top: 1px solid var(--border);
+}
+
+.faq__header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.faq__header .section-subtitle {
+  margin: 0.5rem auto 0;
+}
+
+.faq__list {
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.faq-item[open] {
+  border-color: rgba(230, 0, 0, 0.45);
+}
+
+.faq-item__question {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  user-select: none;
+  list-style: none;
+}
+
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__toggle {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--accent);
+  transition: transform 0.25s ease;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.faq-item[open] .faq-item__toggle {
+  transform: rotate(45deg);
+}
+
+.faq-item__answer {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.faq-item__answer strong {
+  color: var(--text-secondary);
+}
+
+.faq__footer {
+  text-align: center;
+  margin-top: 2.75rem;
+}
+
+.faq__footer-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
 /* ── CTA Banner ── */
 .cta-banner {
   padding: 3rem 0;
@@ -1072,7 +1544,102 @@ ul {
   border-bottom-color: var(--accent);
 }
 
-/* ── WhatsApp Float Button ── */
+/* ── WhatsApp Float Button & Tooltip Proativo ── */
+.whatsapp-float-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.whatsapp-float-container .whatsapp-float {
+  position: relative;
+  bottom: auto;
+  right: auto;
+}
+
+.whatsapp-tooltip {
+  background: #1e1e1e;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  max-width: 280px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 16px rgba(37, 211, 102, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.whatsapp-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.whatsapp-tooltip__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.whatsapp-tooltip__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #25D366;
+}
+
+.whatsapp-tooltip__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #25D366;
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-tooltip__close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.whatsapp-tooltip__close:hover {
+  color: var(--text-primary);
+}
+
+.whatsapp-tooltip__message {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.whatsapp-tooltip__link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #25D366;
+  text-decoration: underline;
+  margin-top: 0.2rem;
+  display: inline-block;
+}
+
 .whatsapp-float {
   position: fixed;
   bottom: 2rem;
@@ -1184,6 +1751,15 @@ ul {
     justify-content: center;
     gap: 1rem;
     text-align: center;
+  }
+
+  .whatsapp-float-container {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .whatsapp-tooltip {
+    max-width: 250px;
   }
 }
 
