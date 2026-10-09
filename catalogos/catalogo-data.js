@@ -248,6 +248,96 @@ const CATALOGO_MODELOS = [
     ],
     waCtaLabel: "Quero informações agora",
     waText: "Olá! Quero informações e valores do modelo AG MAX."
+  },
+  {
+    id: "zenvo",
+    name: "Scooter Zenvo",
+    cardImage: "../assets/zenvo-vermelha.webp",
+    specs: ["Design Esportivo e Arrojado", "Potência e Autonomia Urbana", "Ficha técnica: descubra no WhatsApp"],
+    colors: [
+      {
+        id: "vermelho",
+        label: "Vermelho",
+        swatch: "#e60000",
+        photos: [
+          "../assets/zenvo-vermelha.webp",
+          "../assets/zenvo-1-vermelho.webp",
+          "../assets/zenvo-2-vermelho.webp"
+        ]
+      }
+    ],
+    waCtaLabel: "Quero informações da Zenvo",
+    waText: "Olá! Vi a Scooter Zenvo Vermelha no catálogo e quero saber valores e a ficha técnica completa!"
+  },
+  {
+    id: "savage",
+    name: "Scooter Savage",
+    cardImage: "../assets/savage-verde.webp",
+    specs: ["Visual Robusto e Imponente", "Alta Performance Elétrica", "Ficha técnica: descubra no WhatsApp"],
+    colors: [
+      {
+        id: "verde",
+        label: "Verde",
+        swatch: "#22c55e",
+        photos: [
+          "../assets/savage-verde.webp",
+          "../assets/savage-1-verde.webp",
+          "../assets/savage-2-verde.webp"
+        ]
+      }
+    ],
+    waCtaLabel: "Quero informações da Savage",
+    waText: "Olá! Vi a Scooter Savage Verde no catálogo e quero saber valores e a ficha técnica completa!"
+  },
+  {
+    id: "confidencial-1",
+    name: "Lançamento Confidencial I",
+    cardImage: "../assets/placeholder-moto.png",
+    isMystery: true,
+    badgeLabel: "EM BREVE",
+    specs: [
+      "Projeto Confidencial Elite Rodas",
+      "Segredo guardado a 7 chaves",
+      "Descubra em primeira mão no WhatsApp"
+    ],
+    teaserDescription: "Um novo conceito de liberdade elétrica está sendo desenvolvido sob absoluto sigilo. Linhas agressivas, motor de última geração e autonomia extraordinária. Entre na lista VIP para receber a revelação e condições especiais de pré-lançamento.",
+    colors: [
+      {
+        id: "confidencial",
+        label: "Confidencial",
+        swatch: "#1a1a1a",
+        photos: [
+          "../assets/placeholder-moto.png"
+        ]
+      }
+    ],
+    waCtaLabel: "Quero Entrar na Lista VIP",
+    waText: "Olá! Vi o Lançamento Confidencial I no catálogo e quero entrar na Lista VIP para receber informações e valores com prioridade!"
+  },
+  {
+    id: "confidencial-2",
+    name: "Lançamento Confidencial II",
+    cardImage: "../assets/placeholder-moto.png",
+    isMystery: true,
+    badgeLabel: "EM BREVE",
+    specs: [
+      "Design Futurista e Inovador",
+      "Performance Urbana Surpreendente",
+      "Entre na lista VIP pelo WhatsApp"
+    ],
+    teaserDescription: "Prepare-se para o inesperado. Uma inovação sobre duas rodas projetada para transformar seu dia a dia com torque instantâneo, visual arrojado e zero emissões. Cadastre-se com nossa equipe para garantir acesso antecipado.",
+    colors: [
+      {
+        id: "em-breve",
+        label: "Revelação em Breve",
+        swatch: "#e60000",
+        photos: [
+          "../assets/placeholder-moto.png"
+        ]
+      }
+    ],
+    waCtaLabel: "Garantir Acesso Antecipado",
+    waText: "Olá! Vi o Lançamento Confidencial II no catálogo da Elite Rodas e quero garantir meu acesso antecipado às novidades no WhatsApp!"
   }
 ];
 

@@ -36,7 +36,7 @@ Os links aparecem no rodapé de [`index.html`](index.html), no bloco `nav.footer
 
 - `index.html` — página principal (institucional, menu e chamada para o catálogo)
 - `catalogos/index.html` — página pública do catálogo dedicado (`/catalogos/`)
-- `catalogos/catalogo-data.js` — fonte de dados dos 8 modelos oficiais e opções de cores
+- `catalogos/catalogo-data.js` — fonte de dados dos 11 modelos oficiais, opções de cores e lançamentos confidenciais
 - `catalogos/catalogo.css` — estilos da grade de produtos e modal interativo
 - `styles.css` — folha de estilos externa compartilhada (landing page e páginas legais)
 - `politica-de-privacidade.html` — política LGPD

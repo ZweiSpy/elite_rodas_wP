@@ -4,21 +4,21 @@
 
 | Papel | Responsável | Função |
 |-------|-------------|--------|
-| PO (Product Owner) | Vinícius Tavares de Miranda | Dados de negócio, aprovação de textos e escopo |
-| PM / Arquiteto | Cursor + PO | Spec-Driven: documentos-verdade + auditorias reais |
-| Desenvolvedor | Antigravity | Implementação HTML/CSS/JS, `README.md` e assets conforme docs |
+| PO (Product Owner) | Vinícius Tavares de Miranda | Dados de negócio, aprovação de textos, modelos e escopo |
+| PM / Arquiteto / Desenvolvedor | Antigravity | Gestão técnica dos documentos-verdade (`PLAN.md`, `SDD.md`), arquitetura do sistema, auditorias e implementação HTML/CSS/JS e assets |
 
-**Documentos-verdade (Cursor):** [`PLAN.md`](PLAN.md), [`SDD.md`](SDD.md), [`AGENTS.md`](AGENTS.md).
+**Documentos-verdade:** [`PLAN.md`](PLAN.md), [`SDD.md`](SDD.md), [`AGENTS.md`](AGENTS.md).
 
-**Divisão obrigatória:** Cursor/PM atualiza **somente** esses Markdown de especificação. Antigravity implementa o código. Não inverter.
+**Governança:** Antigravity atua de ponta a ponta na especificação técnica, documentação e implementação, com validação e aprovação do PO antes de publicação em produção (`main`).
 
 ## Fluxo de decisão
 
-1. PO define requisitos e dados confirmados.
-2. Cursor documenta em `PLAN.md` / `SDD.md` / `AGENTS.md`.
-3. Antigravity implementa conforme os docs.
-4. Cursor audita (escopo, BOM, JSON, links) antes de merge/`main`.
-5. **Se faltar dado ou houver ambiguidade → parar e perguntar ao PO.** Nunca inventar informações.
+1. PO define requisitos, modelos, fotos e dados confirmados.
+2. Antigravity documenta e atualiza `PLAN.md` / `SDD.md` / `AGENTS.md`.
+3. Antigravity implementa o código e assets conforme as especificações aprovadas.
+4. Antigravity audita (escopo, UTF-8 sem BOM, JSON válido, links e paths case-sensitive).
+5. PO valida no preview (`develop`) para autorizar publicação em produção (`main`).
+6. **Se faltar dado ou houver ambiguidade → parar e perguntar ao PO.** Nunca inventar informações comerciais ou cadastrais.
 
 ## Stack
 
@@ -45,38 +45,36 @@
 - `vercel.json`, `package.json` e qualquer `.js`/`.html` commitado: **UTF-8 sem BOM** (`EF BB BF` proibido).
 - Antes de push: validar `JSON.parse` em `package.json` e `vercel.json`; scan de BOM nos arquivos novos/alterados.
 
-### Auditoria Cursor (pré-push / pré-merge)
+### Auditoria Técnica (pré-push / pré-merge)
 
-- [ ] Diff limitado ao escopo da sprint em `PLAN.md` / `SDD.md`
-- [ ] Sem BOM nos arquivos tocados
-- [ ] `package.json` / `vercel.json` parseiam se alterados
-- [ ] Números, URLs e modelos só os documentados
+- [ ] Diff alinhado ao escopo da sprint em `PLAN.md` / `SDD.md`
+- [ ] Sem BOM nos arquivos tocados (UTF-8 estrito)
+- [ ] `package.json` / `vercel.json` parseiam sem erros
+- [ ] Números, URLs e modelos só os documentados e aprovados pelo PO
 - [ ] Site institucional / OAuth / footer intocados se fora do escopo
-- [ ] Paths de assets case-sensitive e arquivos `*-{cor}` versionados no Git
+- [ ] Paths de assets case-sensitive e arquivos versionados no Git
 
 ## Regras para Antigravity
 
 ### Obrigatório
 
-- Usar **somente** dados de `PLAN.md` / `SDD.md`.
+- Usar **somente** dados de `PLAN.md` / `SDD.md` confirmados pelo PO.
 - Manter **Política** e **Termos** em arquivos separados.
-- Canais WhatsApp e redes: exclusivamente `PLAN.md`.
-- Catálogo: seguir **`SDD.md`** (8 modelos, modal, CTA WA agressivo, sem descrição longa no modal).
+- Canais WhatsApp e redes: exclusivamente os documentados em `PLAN.md`.
+- Catálogo: seguir **`SDD.md`** (modelos ativos, modal interativo, CTA WA comercial, sem descrição longa no modal padrão).
 - Preferir CSS externo; tokens de marca alinhados a `styles.css`.
 - Declarar ausência de cookies e GA nesta versão do site (páginas legais).
 - Parar e perguntar ao PO em caso de dúvida.
 
-### Sprint atual — assets por cor (11/09/2026)
+### Sprint Atual — Novos Modelos (Zenvo, Savage) e Lançamentos Confidenciais (Outubro/2026)
 
-- Seguir **`SDD.md`** §§4–7 e checklist §11; tabela em **`PLAN.md`**.
-- Padrão: `{modelo}[-{n}]-{cor}.jpeg` (cor por último).
-- **M16, X13, DOT, AG MAX:** `photos` com paths `*-{cor}` reais (não usar nomes antigos sem cor).
-- **X13:** cores `preto-brilhoso` + `preto-fosco` (não `preto` único); carbono com **3** fotos; não inventar `x13-3-carbono.jpeg`.
-- **X11, X16, Raptor, Triciclo:** provisórios (arquivo sem cor na 1ª cor; demais `photos: []`).
-- Case: `M16-cinza.jpeg` etc. com **M maiúsculo**.
-- Modal: cor sem fotos → fallback + “Fotos desta cor em breve”.
-- Ignorar `WhatsApp Image…` e `placeholder-moto.png`. WhatsApp catálogo: **(21) 97320-8542**.
-- Não alterar index raiz / footer / OAuth / legais nesta sprint.
+- Seguir **`SDD.md`** e **`PLAN.md`**.
+- Adicionar **Scooter Zenvo** (Vermelho, 3 fotos `.webp`) e **Scooter Savage** (Verde, 3 fotos `.webp`).
+- Adicionar 2 cards misteriosos com fita "EM BREVE", estética de suspense e design confidencial:
+  - **Lançamento Confidencial I**
+  - **Lançamento Confidencial II**
+- No modal dos cards confidenciais: descrição instigante/teaser e CTA para entrada na Lista VIP do WhatsApp.
+- Preservar integridade dos modelos anteriores (X11, X13, Tank Pro, DOT, M16, Triciclo BIG, AG MAX).
 
 ### Footer (`index.html`) — layout (já entregue; não redesenhar nesta sprint)
 
@@ -86,19 +84,16 @@
 
 ### Proibido
 
-- Inventar CNPJ, contatos, URLs, cores oficiais ou fotos não confirmadas pelo PO.
-- Inventar `x13-3-carbono.jpeg` ou `*-{cor}` dos modelos provisórios.
-- Alterar OAuth, footer, assistência, legais nesta sprint.
-- Cursor implementar HTML/CSS no lugar do Antigravity (exceto ordem explícita do PO).
+- Inventar CNPJ, contatos, URLs ou cores não confirmadas pelo PO.
 - Commitar arquivos com BOM UTF-8.
-- Incluir arquivos `WhatsApp Image…` / `placeholder-moto.png` no catálogo.
+- Incluir arquivos soltos do tipo `WhatsApp Image…` no catálogo.
 
-### Arquivos permitidos — sprint assets por cor
+### Arquivos permitidos nesta sprint
 
-- `catalogos/catalogo-data.js` (reescrever cores + photos)
-- `catalogos/index.html` / `catalogos/catalogo.css` (somente se o fallback/modal já não cobrir a UX)
-- `assets/` — versionar os `*-{cor}` entregues pelo PO (sem `WhatsApp Image…`)
-- Documentos-verdade: só Cursor (`PLAN.md`, `SDD.md`, `AGENTS.md`)
+- `catalogos/catalogo-data.js` (novos modelos e dados)
+- `catalogos/index.html` e `catalogos/catalogo.css` (fita "EM BREVE", estilos de suspense e modal teaser)
+- Documentos-verdade: `PLAN.md`, `SDD.md`, `AGENTS.md`, `README.md`
+- Assets oficiais vinculados aos novos modelos (`assets/*.webp`, `placeholder-moto.png`)
 
 ## Referências legais (Brasil)
 

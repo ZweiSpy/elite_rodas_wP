@@ -46,33 +46,27 @@ index.html             # só menu + CTA → /catalogos/
 
 Modelos **ainda provisórios** (sem sufixo de cor): colocar o arquivo único na **primeira cor** da lista; demais cores com `photos: []`.
 
-## 5. Modelos (8) + cores oficiais + assets
+## 5. Modelos (11) + Cores Oficiais + Assets
 
-### 5.1 Com arquivos `*-{cor}` (obrigatório nesta entrega)
+### 5.1 Linha Oficial Ativa
 
 | id | name | Cores (ordem) | `photos` por cor (prefixo `../assets/`) |
 |----|------|---------------|----------------------------------------|
-| `m16` | Scooter M16 | Cinza, Verde claro | Cinza: `M16-cinza.jpeg`, `M16-1-cinza.jpeg`, `M16-2-cinza.jpeg` · Verde claro: `M16-verde-claro.jpeg`, `M16-1-verde-claro.jpeg`, `M16-2-verde-claro.jpeg` |
-| `x13` | Scooter X13 | Preto brilhoso, Preto fosco, Branco, Azul, Vermelho, Carbono | Preto brilhoso: `x13-preto-brilhoso.jpeg` … `x13-3-preto-brilhoso.jpeg` · Preto fosco: `x13-preto-fosco.jpeg` … `x13-3-preto-fosco.jpeg` · Branco: `x13-branco.jpeg` … `x13-3-branco.jpeg` · Azul: `x13-azul.jpeg` … `x13-3-azul.jpeg` · Vermelho: `x13-vermelho.jpeg` … `x13-3-vermelho.jpeg` · Carbono: `x13-carbono.jpeg`, `x13-1-carbono.jpeg`, `x13-2-carbono.jpeg` (**sem** `-3` nesta sprint; 4º ângulo = PO futuro) |
-| `dot` | Scooter DOT | Preto, Branco, Cinza | Preto: `dot-preto.jpeg`, `dot-1-preto.jpeg`, `dot-2-preto.jpeg` · Branco: `dot-branco.jpeg`, `dot-1-branco.jpeg`, `dot-2-branco.jpeg` · Cinza: `dot-cinza.jpeg`, `dot-1-cinza.jpeg`, `dot-2-cinza.jpeg` |
-| `ag-max` | AG MAX | Cinza | `ag-max-cinza.jpeg`, `ag-max-1-cinza.jpeg`, `ag-max-2-cinza.jpeg` |
+| `x11` | Scooter X11 | Preto, Vermelho, Branco, Azul | Preto: `X11-preto.jpg` … `X11-2-preto.jpg` · Vermelho: `X11-vermelho.jpg` … `X11-2-vermelho.jpg` · Branco/Azul: `photos: []` |
+| `x13` | Scooter X13 | Preto brilhoso, Preto fosco, Branco, Azul, Vermelho, Carbono | Preto brilhoso: `x13-preto-brilhoso.jpeg` … `x13-3-preto-brilhoso.jpeg` · Preto fosco: `x13-preto-fosco.jpeg` … `x13-3-preto-fosco.jpeg` · Branco: `x13-branco.jpeg` … `x13-3-branco.jpeg` · Azul: `x13-azul.jpeg` … `x13-3-azul.jpeg` · Vermelho: `x13-vermelho.jpeg` … `x13-3-vermelho.jpeg` · Carbono: `x13-carbono.jpeg`, `x13-1-carbono.jpeg`, `x13-2-carbono.jpeg` |
+| `tank-pro` | Scooter Tank Pro | Preto, Branco | Preto: `TankPRO-preto.jpg` … `TankPRO-2-preto.jpg` · Branco: `TankPRO-branco.jpg` … `TankPRO-2-branco.jpg` |
+| `dot` | Scooter DOT | Preto, Branco, Cinza | Preto: `dot-preto.jpeg`, `dot-1-preto.jpeg`, `dot-2-preto.jpeg` · Branco: `dot-branco.jpeg` … · Cinza: `dot-cinza.jpeg` … |
+| `m16` | Scooter M16 | Cinza, Verde claro | Cinza: `M16-cinza.jpeg` … · Verde claro: `M16-verde-claro.jpeg` … |
+| `triciclo-big` | Triciclo BIG | Bege, Preto | Bege: `triciclo.jpeg` · Preto: `photos: []` |
+| `ag-max` | AG MAX | Cinza | Cinza: `ag-max-cinza.jpeg`, `ag-max-1-cinza.jpeg`, `ag-max-2-cinza.jpeg` |
+| `zenvo` | Scooter Zenvo | Vermelho | Vermelho: `zenvo-vermelha.webp`, `zenvo-1-vermelho.webp`, `zenvo-2-vermelho.webp` |
+| `savage` | Scooter Savage | Verde | Verde: `savage-verde.webp`, `savage-1-verde.webp`, `savage-2-verde.webp` |
+| `confidencial-1` | Lançamento Confidencial I | Confidencial | Silhueta: `placeholder-moto.png` · `isMystery: true` · Fita "EM BREVE" |
+| `confidencial-2` | Lançamento Confidencial II | Revelação em Breve | Silhueta: `placeholder-moto.png` · `isMystery: true` · Fita "EM BREVE" |
 
-**X13:** não usar id/label `preto` único — apenas `preto-brilhoso` e `preto-fosco`.
-
-### 5.2 Ainda provisórios
-
-| id | name | Cores (ordem) | Arquivo → 1ª cor |
-|----|------|---------------|------------------|
-| `x11` | Scooter X11 | Preto, Branco, Azul, Vermelho | `x11.jpeg` → Preto |
-| `x16` | Scooter X16 | Preto, Branco, Azul, Vermelho | `x16.jpeg` → Preto |
-| `raptor` | Scooter Raptor | Vermelho, Preto, Cinza | `raptor.jpeg` → Vermelho |
-| `triciclo-big` | Triciclo BIG | Bege, Preto | `triciclo.jpeg` → Bege |
-
-**Não incluir:** X17, X18, X13 Pro, X13 Pro Max.
+**Removidos definitivamente:** X16 (substituída por Tank Pro), Raptor, X17, X18.
 
 **cardImage:** primeira foto da primeira cor com `photos.length > 0`.
-
-Specs no card: reaproveitar as atuais. X16, Raptor, AG MAX: manter **Consulte** onde já estava.
 
 ### Swatches hex (UI)
 

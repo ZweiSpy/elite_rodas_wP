@@ -9,7 +9,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Catálogo de Motos e Scooters Elétricas — Elite Rodas">
-  <meta property="og:description" content="Descubra os modelos elétricos da Elite Rodas: X11, X13, Tank Pro, DOT, M16, Triciclo BIG e AG MAX.">
+  <meta property="og:description" content="Descubra a linha de motos e scooters elétricas da Elite Rodas: X11, X13, Tank Pro, DOT, M16, Triciclo BIG, AG MAX, Zenvo, Savage e Lançamentos Confidenciais.">
   <meta property="og:image" content="../assets/opengraph-Image.jpeg">
 
   <link rel="icon" type="image/jpeg" href="../assets/favicon.jpeg">
@@ -142,7 +142,9 @@
         <div class="modal-info">
           
           <div class="modal-info__header">
+            <div id="modal-mystery-tag" class="modal-mystery-tag" hidden>🔒 Confidencial · Lançamento em Breve</div>
             <h2 id="modal-title" class="modal-info__title"></h2>
+            <div id="modal-mystery-teaser" class="modal-mystery-teaser" hidden></div>
             
             <div class="modal-info__specs-title">Destaques do Modelo</div>
             <ul id="modal-specs" class="modal-info__specs-list"></ul>
@@ -312,6 +314,11 @@
       const modal = document.getElementById('catalog-modal');
       const modalClose = document.getElementById('modal-close');
       const modalTitle = document.getElementById('modal-title');
+      const modalMysteryTag = document.getElementById('modal-mystery-tag');
+      const modalMysteryTeaser = document.getElementById('modal-mystery-teaser');
+      const modalPanel = modal ? modal.querySelector('.modal-panel') : null;
+      const modalSpecsTitle = modal ? modal.querySelector('.modal-info__specs-title') : null;
+      const modalBadgesContainer = modal ? modal.querySelector('.modal-badges') : null;
       const modalImg = document.getElementById('modal-img');
       const modalThumbs = document.getElementById('modal-thumbs');
       const modalPhotoNotice = document.getElementById('modal-photo-notice');
@@ -339,20 +346,30 @@
 
         models.forEach((model, index) => {
           const card = document.createElement('article');
-          card.className = 'product-card';
+          const isMystery = Boolean(model.isMystery);
+          card.className = 'product-card' + (isMystery ? ' product-card--mystery' : '');
           card.setAttribute('tabindex', '0');
           card.setAttribute('role', 'button');
-          card.setAttribute('aria-label', 'Ver detalhes e cores de ' + model.name);
+          card.setAttribute('aria-label', (isMystery ? 'Conhecer pré-lançamento de ' : 'Ver detalhes e cores de ') + model.name);
 
           const specsHtml = (model.specs || [])
             .map(s => '<li>' + s + '</li>')
             .join('');
 
           const waUrl = buildWhatsAppUrl(model.waText);
+          const badgeText = isMystery ? '🔒 Em Breve' : '100% Elétrica';
+          const badgeClass = isMystery ? 'product-card__badge product-card__badge--mystery' : 'product-card__badge';
+          const btnLabel = isMystery ? 'Conhecer Pré-Lançamento' : 'Ver Detalhes e Cores';
+          const ctaWaLabel = isMystery ? 'Lista VIP no WhatsApp' : 'Consultar no WhatsApp';
 
           card.innerHTML = `
+            ${isMystery ? `
+              <div class="product-card__ribbon-wrapper" aria-hidden="true">
+                <div class="product-card__ribbon">Em Breve</div>
+              </div>
+            ` : ''}
             <div class="product-card__image-container">
-              <span class="product-card__badge">100% Elétrica</span>
+              <span class="${badgeClass}">${badgeText}</span>
               <img 
                 src="${model.cardImage}" 
                 alt="${model.name}" 
@@ -367,10 +384,10 @@
               </ul>
               <div class="product-card__actions">
                 <button type="button" class="btn btn--primary js-open-modal" data-id="${model.id}">
-                  Ver Detalhes e Cores
+                  ${btnLabel}
                 </button>
                 <a href="${waUrl}" class="btn btn--outline" target="_blank" rel="noopener">
-                  Consultar no WhatsApp
+                  ${ctaWaLabel}
                 </a>
               </div>
             </div>
@@ -455,16 +472,18 @@
 
         setModalPhoto(photos[0], 0);
 
-        // Atualizar CTA WhatsApp com texto dinâmico incluindo a cor escolhida
+        // Atualizar CTA WhatsApp com texto dinâmico incluindo a cor escolhida (se não for misterioso)
         let customWaText = currentModel.waText;
-        if (colorObj.id !== 'ref') {
+        if (!currentModel.isMystery && colorObj.id !== 'ref') {
           customWaText = 'Olá! Quero informações e valores do modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
         }
         modalWaCta.href = buildWhatsAppUrl(customWaText);
 
         if (modalWaTestride) {
-          let testDriveText = 'Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + currentModel.name + '.';
-          if (colorObj.id !== 'ref') {
+          let testDriveText = currentModel.isMystery
+            ? 'Olá! Gostaria de entrar na fila de espera para Test-Drive do modelo ' + currentModel.name + '.'
+            : 'Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + currentModel.name + '.';
+          if (!currentModel.isMystery && colorObj.id !== 'ref') {
             testDriveText = 'Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + currentModel.name + ' na cor ' + colorObj.label + '.';
           }
           modalWaTestride.href = buildWhatsAppUrl(testDriveText);
@@ -475,12 +494,55 @@
       function openModal(model, triggerEl) {
         lastFocusedElement = triggerEl || document.activeElement;
         currentModel = model;
+        const isMystery = Boolean(model.isMystery);
+
+        if (modalPanel) {
+          modalPanel.classList.toggle('modal-panel--mystery', isMystery);
+        }
+        if (modalMysteryTag) {
+          modalMysteryTag.hidden = !isMystery;
+        }
+        if (modalMysteryTeaser) {
+          if (isMystery && model.teaserDescription) {
+            modalMysteryTeaser.textContent = model.teaserDescription;
+            modalMysteryTeaser.hidden = false;
+          } else {
+            modalMysteryTeaser.textContent = '';
+            modalMysteryTeaser.hidden = true;
+          }
+        }
+        if (modalSpecsTitle) {
+          modalSpecsTitle.textContent = isMystery ? 'Informações do Projeto' : 'Destaques do Modelo';
+        }
+        if (modalBadgesContainer) {
+          if (isMystery) {
+            modalBadgesContainer.innerHTML = `
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">🔒</span> Fila de Espera VIP</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">⚡</span> Pré-Lançamento Exclusivo</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Atendimento Prioritário</span>
+            `;
+          } else {
+            modalBadgesContainer.innerHTML = `
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> 100% Sem CNH</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Bivolt 110V/220V</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Cartão até 21x</span>
+              <span class="modal-badge"><span class="modal-badge-check" aria-hidden="true">✓</span> Programa Upgrade</span>
+            `;
+          }
+        }
 
         modalTitle.textContent = model.name;
         modalWaLabel.textContent = model.waCtaLabel || 'Quero informações agora';
 
         if (modalWaTestride) {
-          modalWaTestride.href = buildWhatsAppUrl('Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + model.name + '.');
+          const testDriveSpan = modalWaTestride.querySelector('span');
+          if (testDriveSpan) {
+            testDriveSpan.textContent = isMystery ? 'Entrar na Fila de Test-Drive VIP' : 'Agendar Test-Drive deste Modelo';
+          }
+          const defaultTestText = isMystery
+            ? 'Olá! Gostaria de entrar na fila de espera para Test-Drive do modelo ' + model.name + '.'
+            : 'Olá! Gostaria de agendar um Test-Drive presencial na loja para o modelo ' + model.name + '.';
+          modalWaTestride.href = buildWhatsAppUrl(defaultTestText);
         }
 
         // Specs
@@ -530,7 +592,10 @@
 
         setTimeout(() => {
           modal.hidden = true;
+          if (modalPanel) modalPanel.classList.remove('modal-panel--mystery');
           if (modalPhotoNotice) modalPhotoNotice.hidden = true;
+          if (modalMysteryTag) modalMysteryTag.hidden = true;
+          if (modalMysteryTeaser) modalMysteryTeaser.hidden = true;
           if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
             lastFocusedElement.focus();
           }

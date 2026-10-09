@@ -4,9 +4,8 @@
 
 | Papel | Responsável | Escopo |
 |-------|-------------|--------|
-| PO | Vinícius Tavares de Miranda | Dados, links, aprovação |
-| PM / Arquiteto | Cursor | Documentos-verdade: `PLAN.md`, `SDD.md`, `AGENTS.md` + auditorias |
-| Desenvolvedor | Antigravity | HTML, CSS, JS, `README.md` e assets conforme `PLAN.md` / `SDD.md` |
+| PO | Vinícius Tavares de Miranda | Dados de negócio, aprovação de textos, modelos e escopo |
+| PM / Arquiteto / Desenvolvedor | Antigravity | Gestão de `PLAN.md` e `SDD.md`, arquitetura técnica, implementação HTML/CSS/JS/assets e auditorias |
 
 ---
 
@@ -296,30 +295,52 @@ Paths no JS: prefixo `../assets/` (ex.: `../assets/M16-cinza.jpeg`).
 | Raptor | `raptor` | Vermelho, Preto, Cinza | `raptor.jpeg` → Vermelho | `photos: []` |
 | Triciclo BIG | `triciclo-big` | Bege, Preto | `triciclo.jpeg` → Bege | `photos: []` |
 
-### Pendência para Antigravity (assets por cor — 11/09/2026)
+### Pendência para Antigravity (assets por cor — concluída)
 
-- [ ] Reescrever `catalogos/catalogo-data.js` com a tabela acima (ids/labels/swatches/`photos`); UTF-8 **sem BOM**
-- [ ] Remover paths antigos sem cor onde o PO já entregou `*-{cor}` (`x13.jpeg`, `M16.jpeg`, `dot.jpeg`, `ag-max.jpeg`, etc.)
-- [ ] `cardImage` = primeira foto da primeira cor que tiver `photos.length > 0`
-- [ ] X13: **sem** cor `preto` única — usar `preto-brilhoso` e `preto-fosco`
-- [ ] X13 carbono: exatamente 3 fotos listadas; não inventar `x13-3-carbono.jpeg`
-- [ ] X11 / X16 / Raptor / Triciclo: manter regra provisória
-- [ ] Modal: manter fallback + “Fotos desta cor em breve” onde `photos: []`
-- [ ] Não incluir `WhatsApp Image…` nem `placeholder-moto.png`
-- [ ] Não alterar OAuth, footer, assistência, legais, `index.html` raiz
-- [ ] Versionar no Git os assets `*-{cor}` novos + paths case-sensitive; push `develop` para preview
-
-### Pendências do PO (após esta entrega)
-
-- Validar preview `develop` e autorizar merge `main`
-- Entregar `*-{cor}` para X11, X16, Raptor e Triciclo BIG
-- Entregar **4º ângulo** do X13 Carbono (`x13-3-carbono.jpeg`) em sprint futura
-- Refino de copy WA, se desejar
+- [x] Reescrever `catalogos/catalogo-data.js` com a tabela de assets por cor; UTF-8 **sem BOM**
+- [x] Remover paths antigos sem cor onde o PO já entregou `*-{cor}` (`x13.jpeg`, `M16.jpeg`, `dot.jpeg`, `ag-max.jpeg`, etc.)
+- [x] `cardImage` = primeira foto da primeira cor que tiver `photos.length > 0`
+- [x] X13: cores `preto-brilhoso` e `preto-fosco`
+- [x] X13 carbono: exatamente 3 fotos listadas
+- [x] Modal: manter fallback + “Fotos desta cor em breve” onde `photos: []`
+- [x] Versionar no Git os assets `*-{cor}` novos + paths case-sensitive; push `develop` e `main`
 
 ---
 
-## Pendências opcionais do PO (não bloqueiam publicação)
+## Sprint: Otimização de Conversão (CRO) e Ajuste de Grade (concluída — 03/10/2026)
 
-- Encarregado/DPO com nome dedicado (canal atual: adm.eliterodas@gmail.com)
-- Prazo específico de retenção de dados (texto usa linguagem genérica conforme finalidades e obrigações legais)
-- Completar assets `*-{cor}` dos modelos ainda provisórios + 4º ângulo carbono X13
+- [x] Scooter Tank Pro substituiu a Scooter X16 (com fotos Preto e Branco)
+- [x] Scooter Raptor removida da grade oficial
+- [x] Scooter X11 atualizada com fotos oficiais em alta qualidade (Preto e Vermelho)
+- [x] Implementação de seções persuasivas de CRO: Hero com métricas, Comparativo de Economia (Gasolina vs. Elétrica), Vantagens 100% Sem CNH (Resolução CONTRAN 996/23), Agendamento de Test-Drive e FAQ com sanfona interativa
+
+---
+
+## Sprint: Novos Modelos (Zenvo & Savage) e Lançamentos Confidenciais (Outubro/2026)
+
+### Objetivo
+
+Expandir o catálogo da Elite Rodas com **4 novos cards**:
+1. **Scooter Zenvo**: 1 cor (Vermelho), 3 fotos de ângulos em `.webp`, specs com frase impactante e CTA direcionado.
+2. **Scooter Savage**: 1 cor (Verde), 3 fotos de ângulos em `.webp`, specs com frase impactante e CTA direcionado.
+3. **Lançamento Confidencial I**: Card de mistério com fita diagonal "EM BREVE", estética *dark suspense*, silhueta esportiva, modal com descrição teaser instigante e CTA para Lista VIP no WhatsApp.
+4. **Lançamento Confidencial II**: Card de mistério com fita diagonal "EM BREVE", estética *dark suspense*, silhueta esportiva, modal com descrição teaser instigante e CTA para Lista VIP no WhatsApp.
+
+### Tabela de Novos Modelos
+
+| Modelo | id | Cores | Fotos (`../assets/`) | Specs / Chamada | CTA WA |
+|--------|----|-------|----------------------|------------------|--------|
+| Scooter Zenvo | `zenvo` | Vermelho (`#e60000`) | `zenvo-vermelha.webp`, `zenvo-1-vermelho.webp`, `zenvo-2-vermelho.webp` | Design Esportivo e Arrojado · Potência e Autonomia Urbana · Ficha técnica: descubra no WhatsApp | Quero informações da Zenvo |
+| Scooter Savage | `savage` | Verde (`#22c55e`) | `savage-verde.webp`, `savage-1-verde.webp`, `savage-2-verde.webp` | Visual Robusto e Imponente · Alta Performance Elétrica · Ficha técnica: descubra no WhatsApp | Quero informações da Savage |
+| Lançamento Confidencial I | `confidencial-1` | Confidencial (`#1a1a1a`) | `placeholder-moto.png` | Projeto Confidencial Elite Rodas · Segredo guardado a 7 chaves · Descubra em primeira mão no WhatsApp | Quero Entrar na Lista VIP |
+| Lançamento Confidencial II | `confidencial-2` | Revelação em Breve (`#e60000`) | `placeholder-moto.png` | Design Futurista e Inovador · Performance Urbana Surpreendente · Entre na lista VIP pelo WhatsApp | Garantir Acesso Antecipado |
+
+### Critérios de Aceite
+
+- [x] Papéis atualizados: Antigravity herda PM e Arquiteto
+- [ ] 4 novos cards renderizados na grade pública de `/catalogos/` (total de 11 modelos)
+- [ ] Cards de mistério com fita diagonal "EM BREVE" e estilo de suspense
+- [ ] Modal interativo suporta abertura dos cards confidenciais com descrição teaser instigante
+- [ ] Zenvo e Savage com 3 ângulos reais da cor ativa
+- [ ] Links do WhatsApp com mensagens pré-formatadas exclusivas para cada novidade
+- [ ] Sem BOM UTF-8, JSONs válidos e deploy sincronizado na Vercel
