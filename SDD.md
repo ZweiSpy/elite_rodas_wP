@@ -59,10 +59,10 @@ Modelos **ainda provisórios** (sem sufixo de cor): colocar o arquivo único na 
 | `m16` | Scooter M16 | Cinza, Verde claro | Cinza: `M16-cinza.jpeg` … · Verde claro: `M16-verde-claro.jpeg` … |
 | `triciclo-big` | Triciclo BIG | Bege, Preto | Bege: `triciclo.jpeg` · Preto: `photos: []` |
 | `ag-max` | AG MAX | Cinza | Cinza: `ag-max-cinza.jpeg`, `ag-max-1-cinza.jpeg`, `ag-max-2-cinza.jpeg` |
-| `zenvo` | Scooter Zenvo | Vermelho | Vermelho: `zenvo-vermelha.webp`, `zenvo-1-vermelho.webp`, `zenvo-2-vermelho.webp` |
-| `savage` | Scooter Savage | Verde | Verde: `savage-verde.webp`, `savage-1-verde.webp`, `savage-2-verde.webp` |
-| `confidencial-1` | Lançamento Confidencial I | Confidencial | Silhueta: `placeholder-moto.png` · `isMystery: true` · Fita "EM BREVE" |
-| `confidencial-2` | Lançamento Confidencial II | Revelação em Breve | Silhueta: `placeholder-moto.png` · `isMystery: true` · Fita "EM BREVE" |
+| `zenvo` | Scooter Zenvo | Vermelho | Vermelho: `zenvo-vermelha.webp`, `zenvo-1-vermelho.webp`, `zenvo-2-vermelho.webp` · `badge: "NOVO"` |
+| `savage` | Scooter Savage | Verde | Verde: `savage-verde.webp`, `savage-1-verde.webp`, `savage-2-verde.webp` · `badge: "NOVO"` |
+| `confidencial-1` | Lançamento Confidencial I | Confidencial | Silhueta: `placeholder-moto.png` · `isMystery: true` · Fita "EM BREVE" · Selo `Confidencial` |
+| `confidencial-2` | Lançamento Confidencial II | Revelação em Breve | Silhueta: `placeholder-moto.png` · `isMystery: true` · Fita "EM BREVE" · Selo `Confidencial` |
 
 **Removidos definitivamente:** X16 (substituída por Tank Pro), Raptor, X17, X18.
 
@@ -276,3 +276,10 @@ Nesta entrega: **não** alterar o index raiz além do já entregue na sprint bas
 - [ ] Case `M16-…` correto
 - [ ] WhatsApp = comercial de `PLAN.md`
 - [ ] Sem BOM; escopo respeitado
+
+
+## 8. Sprint Atualização Outubro/2026: Badges, Modais Compactos e Menu Mobile
+
+- **Hierarquia de Badges:** Zenvo e Savage com `✨ NOVO` (.product-card__badge--new); Confidencial I e II com `🔒 Confidencial` e fita diagonal "EM BREVE"; demais 7 modelos com `100% Elétrica`.
+- **Modais Compactos:** Max-width 780px, max-height min(88vh, 660px) desktop / 90vh mobile, galeria contida e scrollbar fina.
+- **Menu Hambúrguer Mobile:** Fixado no canto superior direito do header em telas < 900px, drawer em tela cheia com glassmorphism e animação para "X".

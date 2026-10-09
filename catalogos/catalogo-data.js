@@ -252,6 +252,7 @@ const CATALOGO_MODELOS = [
   {
     id: "zenvo",
     name: "Scooter Zenvo",
+    badge: "NOVO",
     cardImage: "../assets/zenvo-vermelha.webp",
     specs: ["Design Esportivo e Arrojado", "Potência e Autonomia Urbana", "Ficha técnica: descubra no WhatsApp"],
     colors: [
@@ -272,6 +273,7 @@ const CATALOGO_MODELOS = [
   {
     id: "savage",
     name: "Scooter Savage",
+    badge: "NOVO",
     cardImage: "../assets/savage-verde.webp",
     specs: ["Visual Robusto e Imponente", "Alta Performance Elétrica", "Ficha técnica: descubra no WhatsApp"],
     colors: [

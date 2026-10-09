@@ -344,3 +344,33 @@ Expandir o catálogo da Elite Rodas com **4 novos cards**:
 - [x] Zenvo e Savage com 3 ângulos reais da cor ativa
 - [x] Cards confidenciais apontam diretamente para o Grupo VIP do WhatsApp (`https://chat.whatsapp.com/ItMMSy2mIatLtnzi7Wvxb7`)
 - [x] Sem BOM UTF-8, JSONs válidos e deploy sincronizado na Vercel
+
+---
+
+## Sprint: Revisão de Badges, Ajuste de Modais e Menu Mobile (Outubro/2026)
+
+### Objetivos
+
+1. **Correção e Hierarquia de Badges**:
+   - Somente os 2 lançamentos confidenciais (`confidencial-1` e `confidencial-2`) possuem o selo `🔒 Confidencial` e a fita diagonal `EM BREVE`.
+   - As scooters **Zenvo** e **Savage** recebem o selo exclusivo **`✨ NOVO`** (`.product-card__badge--new`) com estilo verde vibrante, indicando sua introdução recente no catálogo, **sem fita de "Em Breve"**.
+   - Os demais 7 modelos mantêm exclusivamente o selo neutro `100% Elétrica`.
+2. **Ajuste Ergonômico dos Modais**:
+   - Eliminação de abertura excessivamente alongada/alta dos modais.
+   - `max-width: 780px` e `max-height: min(88vh, 660px)` com scrollbar fina.
+   - Viewport da galeria com altura máxima controlada (280px desktop, 190px mobile).
+   - Espaçamentos e paddings compactos para que o conteúdo caiba harmoniosamente no viewport.
+3. **Menu Hambúrguer Mobile (< 900px)**:
+   - Botão `.header__menu-btn` posicionado no canto superior direito do header fixado tanto em `index.html` quanto em `catalogos/index.html`.
+   - Animação suave das 3 barras se transformando em "X" ao abrir.
+   - Drawer overlay com *glassmorphism* e links confortáveis para toque, fechando ao clicar em qualquer link, botão X ou tecla `Escape`.
+   - No desktop (>= 900px), comportamento normal preservado com menu horizontal e botão oculto.
+
+### Critérios de Aceite
+
+- [x] Badges na grade rigorosamente separados (`NOVO` para Zenvo e Savage; `Confidencial` + fita para Confidencial I e II; padrão para os demais)
+- [x] Modais enxutos e ergonomicamente ajustados na tela
+- [x] Menu Hambúrguer Mobile funcional no canto direito superior em todas as páginas
+- [x] Zero alterações em auth/oauth
+- [x] UTF-8 sem BOM estrito em todos os arquivos tocados
+

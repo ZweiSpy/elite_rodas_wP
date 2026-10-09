@@ -47,17 +47,34 @@
         </span>
       </a>
 
-      <nav class="nav" aria-label="Navegação principal">
+      <nav class="nav" id="main-nav" aria-label="Navegação principal">
         <a href="../#hero">Início</a>
         <a href="../#sobre">Sobre Nós</a>
         <a href="/catalogos/" class="active" aria-current="page">Catálogo</a>
         <a href="../#assistencia-tecnica">Assistência Técnica</a>
         <a href="../#contato">Contato</a>
+        <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20o%20cat%C3%A1logo%20de%20motos%20el%C3%A9tricas." class="btn btn--primary nav__mobile-cta" target="_blank" rel="noopener">
+          Falar no WhatsApp
+        </a>
       </nav>
 
       <a href="https://wa.me/5521973208542?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20o%20cat%C3%A1logo%20de%20motos%20el%C3%A9tricas." class="btn btn--primary header__cta" target="_blank" rel="noopener">
         Falar no WhatsApp
       </a>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button 
+        type="button" 
+        class="header__menu-btn" 
+        id="mobile-menu-toggle" 
+        aria-label="Abrir menu de navegação" 
+        aria-expanded="false" 
+        aria-controls="main-nav"
+      >
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+        <span class="header__menu-bar"></span>
+      </button>
     </div>
   </header>
 
@@ -357,8 +374,19 @@
             .join('');
 
           const waUrl = model.waDirectUrl || buildWhatsAppUrl(model.waText);
-          const badgeText = isMystery ? '🔒 Em Breve' : '100% Elétrica';
-          const badgeClass = isMystery ? 'product-card__badge product-card__badge--mystery' : 'product-card__badge';
+          const isNew = model.badge === 'NOVO';
+
+          let badgeText = '100% Elétrica';
+          let badgeClass = 'product-card__badge';
+
+          if (isMystery) {
+            badgeText = '🔒 Confidencial';
+            badgeClass = 'product-card__badge product-card__badge--mystery';
+          } else if (isNew) {
+            badgeText = '✨ NOVO';
+            badgeClass = 'product-card__badge product-card__badge--new';
+          }
+
           const btnLabel = isMystery ? 'Conhecer Pré-Lançamento' : 'Ver Detalhes e Cores';
           const ctaWaLabel = isMystery ? 'Entrar no Grupo VIP' : 'Consultar no WhatsApp';
 
@@ -631,6 +659,37 @@
           closeModal();
         }
       });
+
+      // Controle do Menu Mobile Hambúrguer
+      const menuToggle = document.getElementById('mobile-menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+
+      if (menuToggle && mainNav) {
+        function toggleMenu(force) {
+          const isOpen = typeof force === 'boolean' ? force : !mainNav.classList.contains('is-open');
+          mainNav.classList.toggle('is-open', isOpen);
+          menuToggle.classList.toggle('is-active', isOpen);
+          menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+          document.body.classList.toggle('menu-open', isOpen);
+        }
+
+        menuToggle.addEventListener('click', function () {
+          toggleMenu();
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function () {
+            toggleMenu(false);
+          });
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
+            toggleMenu(false);
+          }
+        });
+      }
 
       // Inicializar
       renderGrid();
