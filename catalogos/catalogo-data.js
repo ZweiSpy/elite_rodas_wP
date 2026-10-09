@@ -298,9 +298,9 @@ const CATALOGO_MODELOS = [
     specs: [
       "Projeto Confidencial Elite Rodas",
       "Segredo guardado a 7 chaves",
-      "Descubra em primeira mão no WhatsApp"
+      "Receba novidades no Grupo VIP"
     ],
-    teaserDescription: "Um novo conceito de liberdade elétrica está sendo desenvolvido sob absoluto sigilo. Linhas agressivas, motor de última geração e autonomia extraordinária. Entre na lista VIP para receber a revelação e condições especiais de pré-lançamento.",
+    teaserDescription: "Um novo conceito de liberdade elétrica está sendo desenvolvido sob absoluto sigilo. Linhas agressivas, motor de última geração e autonomia extraordinária. Entre no Grupo VIP para receber fotos oficiais, ficha técnica e condições especiais de pré-lançamento.",
     colors: [
       {
         id: "confidencial",
@@ -311,8 +311,9 @@ const CATALOGO_MODELOS = [
         ]
       }
     ],
-    waCtaLabel: "Quero Entrar na Lista VIP",
-    waText: "Olá! Vi o Lançamento Confidencial I no catálogo e quero entrar na Lista VIP para receber informações e valores com prioridade!"
+    waCtaLabel: "Entrar no Grupo VIP",
+    waDirectUrl: "https://chat.whatsapp.com/ItMMSy2mIatLtnzi7Wvxb7",
+    waText: "Olá! Vi o Lançamento Confidencial I no catálogo e quero entrar no Grupo VIP para receber informações e valores com prioridade!"
   },
   {
     id: "confidencial-2",
@@ -323,9 +324,9 @@ const CATALOGO_MODELOS = [
     specs: [
       "Design Futurista e Inovador",
       "Performance Urbana Surpreendente",
-      "Entre na lista VIP pelo WhatsApp"
+      "Receba novidades no Grupo VIP"
     ],
-    teaserDescription: "Prepare-se para o inesperado. Uma inovação sobre duas rodas projetada para transformar seu dia a dia com torque instantâneo, visual arrojado e zero emissões. Cadastre-se com nossa equipe para garantir acesso antecipado.",
+    teaserDescription: "Prepare-se para o inesperado. Uma inovação sobre duas rodas projetada para transformar seu dia a dia com torque instantâneo, visual arrojado e zero emissões. Entre no nosso Grupo VIP exclusivo para ter acesso antecipado às novidades.",
     colors: [
       {
         id: "em-breve",
@@ -336,8 +337,9 @@ const CATALOGO_MODELOS = [
         ]
       }
     ],
-    waCtaLabel: "Garantir Acesso Antecipado",
-    waText: "Olá! Vi o Lançamento Confidencial II no catálogo da Elite Rodas e quero garantir meu acesso antecipado às novidades no WhatsApp!"
+    waCtaLabel: "Entrar no Grupo VIP",
+    waDirectUrl: "https://chat.whatsapp.com/ItMMSy2mIatLtnzi7Wvxb7",
+    waText: "Olá! Vi o Lançamento Confidencial II no catálogo da Elite Rodas e quero entrar no Grupo VIP para garantir acesso antecipado às novidades!"
   }
 ];
 

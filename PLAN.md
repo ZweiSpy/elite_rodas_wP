@@ -332,15 +332,15 @@ Expandir o catálogo da Elite Rodas com **4 novos cards**:
 |--------|----|-------|----------------------|------------------|--------|
 | Scooter Zenvo | `zenvo` | Vermelho (`#e60000`) | `zenvo-vermelha.webp`, `zenvo-1-vermelho.webp`, `zenvo-2-vermelho.webp` | Design Esportivo e Arrojado · Potência e Autonomia Urbana · Ficha técnica: descubra no WhatsApp | Quero informações da Zenvo |
 | Scooter Savage | `savage` | Verde (`#22c55e`) | `savage-verde.webp`, `savage-1-verde.webp`, `savage-2-verde.webp` | Visual Robusto e Imponente · Alta Performance Elétrica · Ficha técnica: descubra no WhatsApp | Quero informações da Savage |
-| Lançamento Confidencial I | `confidencial-1` | Confidencial (`#1a1a1a`) | `placeholder-moto.png` | Projeto Confidencial Elite Rodas · Segredo guardado a 7 chaves · Descubra em primeira mão no WhatsApp | Quero Entrar na Lista VIP |
-| Lançamento Confidencial II | `confidencial-2` | Revelação em Breve (`#e60000`) | `placeholder-moto.png` | Design Futurista e Inovador · Performance Urbana Surpreendente · Entre na lista VIP pelo WhatsApp | Garantir Acesso Antecipado |
+| Lançamento Confidencial I | `confidencial-1` | Confidencial (`#1a1a1a`) | `placeholder-moto.png` | Projeto Confidencial Elite Rodas · Segredo guardado a 7 chaves · Receba novidades no Grupo VIP | Entrar no Grupo VIP (`https://chat.whatsapp.com/ItMMSy2mIatLtnzi7Wvxb7`) |
+| Lançamento Confidencial II | `confidencial-2` | Revelação em Breve (`#e60000`) | `placeholder-moto.png` | Design Futurista e Inovador · Performance Urbana Surpreendente · Receba novidades no Grupo VIP | Entrar no Grupo VIP (`https://chat.whatsapp.com/ItMMSy2mIatLtnzi7Wvxb7`) |
 
 ### Critérios de Aceite
 
 - [x] Papéis atualizados: Antigravity herda PM e Arquiteto
-- [ ] 4 novos cards renderizados na grade pública de `/catalogos/` (total de 11 modelos)
-- [ ] Cards de mistério com fita diagonal "EM BREVE" e estilo de suspense
-- [ ] Modal interativo suporta abertura dos cards confidenciais com descrição teaser instigante
-- [ ] Zenvo e Savage com 3 ângulos reais da cor ativa
-- [ ] Links do WhatsApp com mensagens pré-formatadas exclusivas para cada novidade
-- [ ] Sem BOM UTF-8, JSONs válidos e deploy sincronizado na Vercel
+- [x] 4 novos cards renderizados na grade pública de `/catalogos/` (total de 11 modelos)
+- [x] Cards de mistério com fita diagonal "EM BREVE" e estilo de suspense
+- [x] Modal interativo suporta abertura dos cards confidenciais com descrição teaser instigante
+- [x] Zenvo e Savage com 3 ângulos reais da cor ativa
+- [x] Cards confidenciais apontam diretamente para o Grupo VIP do WhatsApp (`https://chat.whatsapp.com/ItMMSy2mIatLtnzi7Wvxb7`)
+- [x] Sem BOM UTF-8, JSONs válidos e deploy sincronizado na Vercel
