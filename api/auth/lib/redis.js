@@ -1,10 +1,62 @@
 /**
- * Utilitário de comunicação com Upstash Redis / Vercel KV via REST API nativa.
- * Usa fetch nativo do Node 18+ (sem dependências externas necessárias).
+ * Utilitário de comunicação com Upstash Redis / Vercel KV via REST API nativa,
+ * com fallback automático em memória + /tmp (TTL + one-shot) caso a instância
+ * gratuita do Upstash entre em hibernação (fetch failed).
  */
 
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+
+const FALLBACK_FILE = path.join(os.tmpdir(), "olist_oauth_store.json");
+
+if (!globalThis.__olistMemoryStore) {
+  globalThis.__olistMemoryStore = new Map();
+}
+
+function writeFallback(key, value, seconds) {
+  const entry = {
+    value,
+    expiresAt: Date.now() + seconds * 1000,
+  };
+  globalThis.__olistMemoryStore.set(key, entry);
+  try {
+    let data = {};
+    if (fs.existsSync(FALLBACK_FILE)) {
+      data = JSON.parse(fs.readFileSync(FALLBACK_FILE, "utf-8") || "{}");
+    }
+    data[key] = entry;
+    fs.writeFileSync(FALLBACK_FILE, JSON.stringify(data), "utf-8");
+  } catch (_) {
+    // Ignora erro de disco se /tmp não estiver disponível
+  }
+}
+
+function readDelFallback(key) {
+  let entry = globalThis.__olistMemoryStore.get(key) || null;
+  globalThis.__olistMemoryStore.delete(key);
+
+  try {
+    if (fs.existsSync(FALLBACK_FILE)) {
+      const data = JSON.parse(fs.readFileSync(FALLBACK_FILE, "utf-8") || "{}");
+      if (!entry && data[key]) {
+        entry = data[key];
+      }
+      if (data[key]) {
+        delete data[key];
+        fs.writeFileSync(FALLBACK_FILE, JSON.stringify(data), "utf-8");
+      }
+    }
+  } catch (_) {
+    // Ignora erro de leitura em /tmp
+  }
+
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) return null;
+  return entry.value;
+}
+
 async function executeCommand(commandArray) {
-  // Suporta qualquer prefixo gerado pela Vercel (STORAGE_, KV_, UPSTASH_REDIS_ ou sem prefixo)
   const url =
     process.env.UPSTASH_REDIS_REST_URL ||
     process.env.KV_REST_API_URL ||
@@ -21,8 +73,7 @@ async function executeCommand(commandArray) {
 
   if (!url || !token) {
     throw new Error(
-      "Credenciais do Upstash Redis / Vercel KV não encontradas. " +
-      "Configure as variáveis de ambiente REST_URL e REST_TOKEN no painel da Vercel."
+      "Credenciais do Upstash Redis / Vercel KV não encontradas."
     );
   }
 
@@ -31,9 +82,9 @@ async function executeCommand(commandArray) {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${token}`,
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(commandArray)
+    body: JSON.stringify(commandArray),
   });
 
   if (!response.ok) {
@@ -51,34 +102,42 @@ async function executeCommand(commandArray) {
 
 /**
  * Grava uma chave com tempo de expiração em segundos (TTL).
- * @param {string} key
- * @param {string} value
- * @param {number} seconds
+ * Salva sempre no fallback local (warm container) e tenta o Upstash Redis.
  */
 async function setEx(key, value, seconds) {
-  return await executeCommand(["SET", key, value, "EX", seconds]);
+  writeFallback(key, value, seconds);
+  try {
+    return await executeCommand(["SET", key, value, "EX", seconds]);
+  } catch (err) {
+    console.warn("Upstash indisponível/hibernado em setEx, usando store em memória+/tmp:", err.message);
+    return "OK";
+  }
 }
 
 /**
  * Lê e remove o valor de forma atômica (one-shot).
- * @param {string} key
- * @returns {Promise<string|null>}
  */
 async function getDel(key) {
+  const localVal = readDelFallback(key);
   try {
-    return await executeCommand(["GETDEL", key]);
+    const remoteVal = await executeCommand(["GETDEL", key]);
+    return remoteVal || localVal;
   } catch (err) {
-    // Fallback de compatibilidade caso o Redis não suporte GETDEL (legado)
-    const val = await executeCommand(["GET", key]);
-    if (val) {
-      await executeCommand(["DEL", key]);
+    try {
+      const val = await executeCommand(["GET", key]);
+      if (val) {
+        await executeCommand(["DEL", key]);
+        return val;
+      }
+    } catch (_) {
+      // Upstash hibernado/offline: retorna valor do fallback local one-shot
     }
-    return val;
+    return localVal;
   }
 }
 
 module.exports = {
   executeCommand,
   setEx,
-  getDel
+  getDel,
 };

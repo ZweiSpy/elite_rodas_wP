@@ -1,9 +1,11 @@
 /**
- * Handler do Callback OAuth do Olist.
- * Recebe o código temporário via redirect do Olist e deposita no Redis com TTL de 120s.
+ * Handler unificado do Callback OAuth do Olist (/auth/callback) e Consumo (/auth/consume).
+ * Unificar na mesma Serverless Function garante que o container warm compartilhe
+ * memória + /tmp mesmo se o Upstash Redis gratuito estiver hibernado.
  */
 
 const { setEx } = require("./lib/redis");
+const consumeHandler = require("./consume");
 
 function renderPage({ title, statusColor, badgeText, heading, message, subMessage, showBack = true }) {
   return `<!DOCTYPE html>
@@ -42,17 +44,6 @@ function renderPage({ title, statusColor, badgeText, heading, message, subMessag
       background: ${statusColor}1A;
       color: ${statusColor};
       border: 1px solid ${statusColor}4D;
-    }
-    .result-icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 1.5rem;
-      border-radius: 50%;
-      background: ${statusColor}1A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: ${statusColor};
     }
     .result-msg {
       font-size: 1.1rem;
@@ -115,11 +106,15 @@ function renderPage({ title, statusColor, badgeText, heading, message, subMessag
 }
 
 module.exports = async function handler(req, res) {
+  // Se a chamada vier autenticada pelo bot (header Authorization ou ?consume=1), delega ao consume
+  if ((req.headers && req.headers["authorization"]) || (req.query && req.query.consume === "1")) {
+    return consumeHandler(req, res);
+  }
+
   res.setHeader("Content-Type", "text/html; charset=utf-8");
 
-  const { code, error, error_description } = req.query;
+  const { code, error, error_description } = req.query || {};
 
-  // Caso de erro reportado pelo Olist
   if (error) {
     res.statusCode = 400;
     return res.end(renderPage({
@@ -133,7 +128,6 @@ module.exports = async function handler(req, res) {
     }));
   }
 
-  // Caso sem código
   if (!code) {
     res.statusCode = 400;
     return res.end(renderPage({
@@ -147,7 +141,6 @@ module.exports = async function handler(req, res) {
     }));
   }
 
-  // Depósito seguro no Redis com TTL de 120s
   try {
     const TTL_SECONDS = 120;
     await setEx("olist_auth_code", code, TTL_SECONDS);
@@ -159,19 +152,19 @@ module.exports = async function handler(req, res) {
       badgeText: "Sucesso",
       heading: "Autorização Recebida!",
       message: "O código temporário foi registrado com sucesso.",
-      subMessage: "Você já pode retornar ao bot no terminal para concluir a captura e o pareamento do ERP. Esta janela pode ser fechada.",
+      subMessage: "O bot já está capturando e pareando automaticamente. Esta janela pode ser fechada.",
       showBack: false
     }));
   } catch (err) {
-    console.error("Erro ao depositar código no Redis:", err.message);
+    console.error("Erro ao depositar código:", err.message);
     res.statusCode = 500;
     return res.end(renderPage({
       title: "Erro no Servidor",
       statusColor: "#E60000",
       badgeText: "Erro Interno",
       heading: "Falha ao Armazenar o Código",
-      message: "O código foi recebido do Olist, mas ocorreu uma falha ao registrá-lo no servidor temporário.",
-      subMessage: "Verifique se o Upstash Redis / Vercel KV está configurado corretamente.",
+      message: "O código foi recebido do Olist, mas ocorreu uma falha ao registrá-lo.",
+      subMessage: "Tente novamente.",
       showBack: true
     }));
   }

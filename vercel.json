@@ -18,7 +18,11 @@
     },
     {
       "source": "/auth/consume",
-      "destination": "/api/auth/consume"
+      "destination": "/api/auth/callback"
+    },
+    {
+      "source": "/api/auth/consume",
+      "destination": "/api/auth/callback"
     }
   ]
 }
