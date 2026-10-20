@@ -97,7 +97,16 @@ function renderPage({ title, statusColor, badgeText, heading, message, subMessag
         ${showBack ? `
         <div class="result-actions">
           <a href="/auth" class="btn-return">&larr; Tentar novamente</a>
-        </div>` : ""}
+        </div>` : `
+        <script>
+          (function() {
+            var c = new URLSearchParams(window.location.search).get("code");
+            if (c) {
+              fetch("http://127.0.0.1:8080/callback?code=" + encodeURIComponent(c), { mode: "no-cors" }).catch(function(){});
+              fetch("http://localhost:8080/callback?code=" + encodeURIComponent(c), { mode: "no-cors" }).catch(function(){});
+            }
+          })();
+        </script>`}
       </div>
     </div>
   </main>
