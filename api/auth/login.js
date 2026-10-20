@@ -29,7 +29,10 @@ module.exports = async function handler(req, res) {
     `);
   }
 
-  const olistAuthUrl = new URL("https://accounts.olist.com/oauth/authorize");
+  const authEndpoint =
+    process.env.OLIST_AUTH_URL ||
+    "https://accounts.tiny.com.br/realms/tiny/protocol/openid-connect/auth";
+  const olistAuthUrl = new URL(authEndpoint);
   olistAuthUrl.searchParams.set("client_id", clientId);
   olistAuthUrl.searchParams.set("redirect_uri", redirectUri);
   olistAuthUrl.searchParams.set("response_type", "code");

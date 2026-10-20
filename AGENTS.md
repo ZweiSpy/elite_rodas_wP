@@ -4,8 +4,8 @@
 
 | Papel | Responsável | Função |
 |-------|-------------|--------|
-| PO (Product Owner) | Vinícius Tavares de Miranda | Dados de negócio, aprovação de textos, modelos e escopo |
-| PM / Arquiteto / Desenvolvedor | Antigravity | Gestão técnica dos documentos-verdade (`PLAN.md`, `SDD.md`), arquitetura do sistema, auditorias e implementação HTML/CSS/JS e assets |
+| PO e Tech Lead | Vinícius Tavares de Miranda | Dados de negócio, decisões de arquitetura, aprovação de textos, modelos e escopo |
+| Engenheiro de Software Sênior · DevOps · Programador · PM · Web Developer Sênior | Antigravity | Gestão técnica dos documentos-verdade (`PLAN.md`, `SDD.md`, `AGENTS.md`), arquitetura web e serverless (OAuth Olist Opção B na Vercel + Upstash Redis), DevOps, auditorias e implementação HTML/CSS/JS e assets |
 
 **Documentos-verdade:** [`PLAN.md`](PLAN.md), [`SDD.md`](SDD.md), [`AGENTS.md`](AGENTS.md).
 

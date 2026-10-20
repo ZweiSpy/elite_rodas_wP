@@ -83,6 +83,7 @@ async function runTests() {
   await loginHandler({ query: {} }, resLogin);
   assert.strictEqual(resLogin.statusCode, 302);
   const location = resLogin.headers["location"];
+  assert.ok(location.startsWith("https://accounts.tiny.com.br/realms/tiny/protocol/openid-connect/auth"));
   assert.ok(location.includes("client_id=olist_app_test_id"));
   assert.ok(location.includes("https%3A%2F%2Fwww.eliterodas.com.br%2Fauth%2Fcallback"));
   console.log("✔ api/auth/login: redirecionamento 302 e parâmetros aprovados.");
